@@ -1,0 +1,29 @@
+name: IPTV Ultimate Pipeline
+
+on:
+  schedule:
+    - cron: '0 20 * * *' # 每天北京时间凌晨 4:00 自动执行清洗任务
+  workflow_dispatch: # 允许你随时在页面上手动点击按钮触发更新
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 拉取当前仓库代码
+      uses: actions/checkout@v4
+
+    - name: 准备 Python 环境
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: 执行清洗与转换脚本
+      run: |
+        pip install requests
+        python build_iptv.py
+
+    - name: 自动部署生成的文件到 GitHub Pages 容器
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: . 
+        branch: gh-pages # 结果将自动发布到专用的 gh-pages 分支上
