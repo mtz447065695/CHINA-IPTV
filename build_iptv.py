@@ -65,12 +65,12 @@ def fetch_with_retry(url, timeout=10, retries=2):
     return None
 
 # =====================================================================
-# PART 1: 国内综合源 -> cn.m3u
+# PART 1: 国内综合源 -> cn.m3u (强保720P/1080P + 10条备选线)
 # =====================================================================
 print("========== 开始构建国内综合源 cn.m3u ==========")
 cn_lines = ['#EXTM3U x-tvg-url="https://raw.githubusercontent.com/fanmingming/live/main/e.xml"']
 
-# 1. 家庭组播线
+# 1. 家庭组播线 (原生运营商1080P/4K源，最优先写入，不受公网限流影响)
 raw_multicast = ""
 local_path = "Multicast/chongqing/unicom.txt"
 upstream_url = "https://raw.githubusercontent.com/xisohi/CHINA-IPTV/main/Multicast/chongqing/unicom.txt"
@@ -87,12 +87,9 @@ if raw_multicast:
         line = line.strip()
         if not line: continue
         idx = line.find(',rtp://')
-        if idx == -1:
-            idx = line.find(', rtp://')
-        if idx == -1:
-            idx = line.find(',udp://')
-        if idx == -1:
-            idx = line.find(', udp://')
+        if idx == -1: idx = line.find(', rtp://')
+        if idx == -1: idx = line.find(',udp://')
+        if idx == -1: idx = line.find(', udp://')
         if idx == -1: continue
         name = line[:idx].strip()
         tail = line[idx+1:].strip()
@@ -107,11 +104,13 @@ if raw_multicast:
         multicast_count += 1
     print(f"  家庭组播: {multicast_count} 条")
 
-# 2. 公网源汇聚
+# 2. 汇聚超清顶级公网源（全面升级大库，丢弃低质量源）
 public_sources = [
-    "https://raw.githubusercontent.com/joevess/IPTV/main/m3u/iptv.m3u",
-    "https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u",
-    "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u"
+    "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u",     # 1080P 蓝光纯净骨干网源
+    "https://raw.githubusercontent.com/yuanzl7/iptv/main/iptv.m3u",                # 百兆超清大厂源大库
+    "https://raw.githubusercontent.com/YueChan/Live/main/APTV.m3u",                # 高画质精品混合源
+    "https://raw.githubusercontent.com/joevess/IPTV/main/m3u/iptv.m3u",             # 高清大厂CDN源
+    "https://raw.githubusercontent.com/ssili126/tv/main/itvlist.m3u"              # 稳定高清备用库
 ]
 
 domestic_pool = []
@@ -132,12 +131,18 @@ for url in public_sources:
                     url_line = l
                     break
             if not url_line: continue
+            
+            # 【高画质强力过滤拦截器】
+            # 如果频道名称或链接里包含“标清”、“SD”、“low”、“500k”等低清晰度标识，直接无视并丢弃
+            if any(kw in ch_name.lower() or kw in url_line.lower() for kw in ["标清", "sd", "low", "blur", "500k", "800k"]):
+                continue
+                
             if "CCTV" in ch_name or "卫视" in ch_name or "重庆" in ch_name:
                 domestic_pool.append((ch_name, url_line))
     else:
         print(f"  跳过: {url}")
 
-# 3. 分流限流
+# 3. 策略分流与限流（放开限额：每个频道狂暴堆叠 10 条最强公网备线）
 ipv4_by_channel = {}
 ipv6_by_channel = {}
 
@@ -146,10 +151,12 @@ for ch_name, stream_url in domestic_pool:
     if not std_name: continue
     bucket = ipv6_by_channel if ("[" in stream_url and "]" in stream_url) else ipv4_by_channel
     if std_name not in bucket: bucket[std_name] = []
-    if len(bucket[std_name]) < 3:
+    
+    # 核心改动：线路改成 10 个备选
+    if len(bucket[std_name]) < 10:
         bucket[std_name].append((ch_name, stream_url))
 
-# 4. 写入外网分组
+# 4. 规范写入 cn.m3u (每组最多 10 条备线)
 ipv4_count = 0
 for std_name in sorted(ipv4_by_channel.keys()):
     logo_url = safe_logo_url(std_name)
@@ -167,11 +174,11 @@ for std_name in sorted(ipv6_by_channel.keys()):
         ipv6_count += 1
 
 with open("cn.m3u", "w", encoding="utf-8") as f: f.write("\n".join(cn_lines))
-print(f"⚡ cn.m3u: 组播 {multicast_count} + IPv4 {ipv4_count} + IPv6 {ipv6_count}")
+print(f"⚡ cn.m3u 构建完成: 组播 {multicast_count} + IPv4 {ipv4_count} + IPv6 {ipv6_count}")
 
 
 # =====================================================================
-# PART 2: 全球精选源 -> qq.m3u
+# PART 2: 全球精选源 -> qq.m3u (保持不变，支持并发测速 + 汉化去重)
 # =====================================================================
 print("\n========== 开始构建全球精选源 qq.m3u ==========")
 iptv_org_urls = {
