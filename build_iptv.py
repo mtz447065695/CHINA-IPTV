@@ -1,16 +1,16 @@
 import os
 import requests
 import re
+import concurrent.futures
 import urllib.parse
 
 # =====================================================================
-# ⚙️ 核心清洗工具（严格保留频道核心词，杜绝错乱）
+# ⚙️ 核心工具函数
 # =====================================================================
 
 def clean_channel_name(name):
     if not name: return ""
     name = name.strip()
-    # 只剥离纯质量后缀，严禁剥离地方台标志词
     name = re.sub(r'(HD|高清|超清|标清|频道|综合|[-—_ ‐\s]+|[\[\(].*?[\]\)])', '', name, flags=re.IGNORECASE)
     name = name.strip()
     if not name: return "Unknown"
@@ -18,118 +18,93 @@ def clean_channel_name(name):
     if cctv_match: return f"CCTV{cctv_match.group(1).upper()}"
     return name
 
-HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-
 def safe_logo_url(std_name):
     if not std_name: return ""
     safe = urllib.parse.quote(std_name, safe='')
     return f"https://raw.githubusercontent.com/fanmingming/live/main/tv/logos/{safe}.png"
 
+def verify_link_global(item):
+    group_name, ch_name, url, logo, tvgid = item
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+    try:
+        with requests.head(url, timeout=3, allow_redirects=True, headers=headers) as r:
+            if r.status_code in [200, 206]: return item
+    except: pass
+    try:
+        with requests.get(url, timeout=3, stream=True, headers=headers) as r:
+            if r.status_code in [200, 206]: return item
+    except: pass
+    return None
+
+GLOBAL_TRANSLATE = {
+    "CNN International": "🇺🇸 CNN 国际新闻", "BBC News": "🇬🇧 BBC 世界新闻",
+    "BBC World News": "🇬🇧 BBC 世界新闻频道", "Discovery Channel": "🇺🇸 探索频道",
+    "National Geographic": "🇺🇸 National Geographic", "HBO": "🇺🇸 HBO 电影台",
+    "CNBC": "🇺🇸 CNBC 财经", "Bloomberg TV": "🇺🇸 彭博财经",
+    "NHK World Premium": "🇯🇵 NHK 世界精品", "KBS World": "🇰🇷 KBS 国际台"
+}
+
+HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+
 # =====================================================================
-# PART 1: 国内纯净源构建 -> cn.m3u
+# PART 1: 纯净重庆联通组播源 -> cn.m3u (独占构建，绝无单播污染)
 # =====================================================================
-print("========== 开始构建纯净国内源 cn.m3u ==========")
+print("========== 开始构建纯净重庆联通组播源 cn.m3u ==========")
 cn_lines = ['#EXTM3U x-tvg-url="https://raw.githubusercontent.com/fanmingming/live/main/e.xml"']
 
-# 1. 独立写入：重庆联通本地组播线（完全隔离，不与任何公网源混合，防名字污染）
-raw_multicast = ""
-local_path = "Multicast/chongqing/unicom.txt"
-upstream_url = "https://raw.githubusercontent.com/xisohi/CHINA-IPTV/main/Multicast/chongqing/unicom.txt"
+# 🎯 核心改动：直接拥抱你找来的全新 CQCU 联通组播大库
+cqcu_multicast_url = "https://raw.githubusercontent.com/1715173329/CQCU-IPTV/master/cqcu-multicast.m3u"
 
-if os.path.exists(local_path):
-    with open(local_path, "r", encoding="utf-8") as f: raw_multicast = f.read()
-else:
-    try:
-        res = requests.get(upstream_url, timeout=10, headers=HEADERS)
-        if res.status_code == 200 and "rtp://" in res.text: raw_multicast = res.text
-    except: pass
-
-multicast_count = 0
-if raw_multicast:
-    for line in raw_multicast.split('\n'):
-        line = line.strip()
-        if not line: continue
-        idx = line.find(',rtp://')
-        if idx == -1: idx = line.find(', rtp://')
-        if idx == -1: idx = line.find(',udp://')
-        if idx == -1: idx = line.find(', udp://')
-        if idx == -1: continue
+try:
+    print("正在从全新的 CQCU 仓库抓取最新重庆联通组播流...")
+    res = requests.get(cqcu_multicast_url, timeout=10, headers=HEADERS)
+    if res.status_code == 200 and "#EXTINF" in res.text:
+        lines = res.text.split('\n')
+        multicast_count = 0
         
-        name = line[:idx].strip()
-        tail = line[idx+1:].strip()
-        std_name = clean_channel_name(name)
-        logo_url = safe_logo_url(std_name)
-        local_url = tail.replace('rtp://', 'http://192.168.1.1:8888/rtp/', 1).replace('udp://', 'http://192.168.1.1:8888/udp/', 1)
-        
-        cn_lines.append(f'#EXTINF:-1 tvg-id="{std_name}" tvg-name="{std_name}" tvg-logo="{logo_url}" group-title="🏠 重庆联通·本地组播专线",{name}')
-        cn_lines.append(local_url)
-        multicast_count += 1
-print(f"✅ 成功固化本地组播源 {multicast_count} 条")
-
-# 2. 跨源汇聚：只认全网公认最强、绝无错乱的 2 大骨干网蓝光池
-elite_sources = [
-    "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u",     # 纯净 1080P/4K 官方直连骨干网流
-    "https://raw.githubusercontent.com/YueChan/Live/main/APTV.m3u"                 # 极度严苛、无错乱的高清直播池
-]
-
-domestic_pool = []
-for url in elite_sources:
-    try:
-        res = requests.get(url, timeout=10, headers=HEADERS)
-        if res.status_code == 200:
-            lines = res.text.split('\n')
-            for i in range(len(lines)):
-                line = lines[i].strip()
-                if not line.startswith("#EXTINF"): continue
-                ch_name = line.split(',')[-1].strip()
-                
-                # 寻找对应的 HTTP 播放地址
-                url_line = ""
-                for j in range(i+1, min(i+5, len(lines))):
-                    l = lines[j].strip()
-                    if l.startswith("#") or not l: continue
-                    if l.startswith("http"):
-                        url_line = l
-                        break
-                if not url_line: continue
-                
-                # 极致画质过滤：只要含有任何低清标识，当场斩杀
-                if any(kw in ch_name.lower() or kw in url_line.lower() for kw in ["标清", "sd", "low", "blur", "500k", "360p", "480p", "576p", "流畅"]):
-                    continue
-                    
-                if "CCTV" in ch_name or "卫视" in ch_name or "重庆" in ch_name:
-                    domestic_pool.append((ch_name, url_line))
-    except:
-        print(f"  顶级库拉取时网络微调跳过: {url}")
-
-# 3. 严格限流：每个干净的频道最多只保留 3 条最高质量的公网蓝光线
-channel_buckets = {}
-for ch_name, stream_url in domestic_pool:
-    std_name = clean_channel_name(ch_name)
-    if not std_name: continue
-    
-    if std_name not in channel_buckets: channel_buckets[std_name] = []
-    if len(channel_buckets[std_name]) < 3:
-        channel_buckets[std_name].append((ch_name, stream_url))
-
-# 4. 组装写入 cn.m3u 的公网蓝光分组
-public_count = 0
-for std_name in sorted(channel_buckets.keys()):
-    logo_url = safe_logo_url(std_name)
-    group_title = "💎 纯净原画·国家骨干网超清线"
-    
-    for ch_name, url in channel_buckets[std_name]:
-        # 自动识别线路标签
-        net_label = "IPv6蓝光" if "[" in url and "]" in url else "IPv4直连"
-        cn_lines.append(f'#EXTINF:-1 tvg-id="{std_name}" tvg-name="{std_name}" tvg-logo="{logo_url}" group-title="{group_title}",{ch_name} [{net_label}]')
-        cn_lines.append(url)
-        public_count += 1
+        for i in range(len(lines)):
+            line = lines[i].strip()
+            if not line.startswith("#EXTINF"): continue
+            
+            # 1. 提取频道原始名称
+            raw_ch_name = line.split(',')[-1].strip()
+            if not raw_ch_name: continue
+            
+            # 2. 向上扫描并提取原本 M3U 里自带的分组属性（如：央视频道、卫视频道等）
+            group_match = re.search(r'group-title="([^"]+)"', line)
+            origin_group = group_match.group(1) if group_match else "重庆联通组播"
+            
+            # 3. 寻找对应的底层组播播放链接 (rtp:// 或 udp://)
+            url_line = ""
+            for j in range(i+1, min(i+5, len(lines))):
+                l = lines[j].strip()
+                if l.startswith("#") or not l: continue
+                if "rtp://" in l or "udp://" in l:
+                    url_line = l
+                    break
+            if not url_line: continue
+            
+            # 4. 洗白电视频道名，生成高清匹配台标
+            std_name = clean_channel_name(raw_ch_name)
+            logo_url = safe_logo_url(std_name)
+            
+            # 5. 【关键】翻译并重写为你家爱快内网 udpxy 的高级网关形式
+            local_url = url_line.replace('rtp://', 'http://192.168.1.1:8888/rtp/', 1).replace('udp://', 'http://192.168.1.1:8888/udp/', 1)
+            
+            # 6. 装配写入，打上纯净的 🏠 组播分组标签
+            cn_lines.append(f'#EXTINF:-1 tvg-id="{std_name}" tvg-name="{std_name}" tvg-logo="{logo_url}" group-title="🏠 重庆联通·{origin_group}",{raw_ch_name}')
+            cn_lines.append(local_url)
+            multicast_count += 1
+            
+        print(f"🎉 成功从 CQCU 库中洗白提取出 {multicast_count} 条原画组播线！")
+except Exception as e:
+    print(f"❌ 抓取全新 CQCU 组播源失败: {e}")
 
 with open("cn.m3u", "w", encoding="utf-8") as f: f.write("\n".join(cn_lines))
-print(f"🚀 国内源 cn.m3u 彻底洗白！保留顶级活链 {public_count} 条")
+
 
 # =====================================================================
-# PART 2: 全球精选源 -> qq.m3u (保持高精汉化)
+# PART 2: 全球精选源 -> qq.m3u (保持不变，确保外网能看)
 # =====================================================================
 print("\n========== 开始构建全球精选源 qq.m3u ==========")
 iptv_org_urls = {
@@ -139,7 +114,7 @@ iptv_org_urls = {
     "全球电影台": "https://iptv-org.github.io/iptv/categories/movies.m3u"
 }
 
-qq_lines = ["#EXTM3U"]
+raw_global_items = []
 for group_name, url in iptv_org_urls.items():
     try:
         res = requests.get(url, timeout=15, headers=HEADERS)
@@ -166,14 +141,29 @@ for group_name, url in iptv_org_urls.items():
                 if not url_line: continue
 
                 if ch_name in GLOBAL_TRANSLATE: ch_name = GLOBAL_TRANSLATE[ch_name]
-                if count < 80:  # 精选前80个高热度频道
-                    logo_attr = f' tvg-logo="{origin_logo}"' if origin_logo else ""
-                    tvgid_attr = f' tvg-id="{origin_tvgid}"' if origin_tvgid else ""
-                    qq_lines.append(f'#EXTINF:-1{tvgid_attr}{logo_attr} group-title="{group_name}",{ch_name} 🌐')
-                    qq_lines.append(url_line)
+                if count < 100:
+                    raw_global_items.append((group_name, ch_name, url_line, origin_logo, origin_tvgid))
                     count += 1
-            print(f"  {group_name}: 成功提取 {count} 条全球活链")
+            print(f"  {group_name}: 抓取 {count} 条")
     except: pass
 
+print(f"🚀 并发测速 {len(raw_global_items)} 条全球源...")
+valid_global = []
+with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executor:
+    results = executor.map(verify_link_global, raw_global_items)
+    for r in results:
+        if r: valid_global.append(r)
+
+seen_global = set()
+qq_lines = ["#EXTM3U"]
+for group_name, ch_name, stream_url, logo_url, tvg_id in valid_global:
+    key = f"{group_name}|{ch_name}"
+    if key in seen_global: continue
+    seen_global.add(key)
+    logo_attr = f' tvg-logo="{logo_url}"' if logo_url else ""
+    tvgid_attr = f' tvg-id="{tvg_id}"' if tvg_id else ""
+    qq_lines.append(f'#EXTINF:-1{tvgid_attr}{logo_attr} group-title="{group_name}",{ch_name} 🌐')
+    qq_lines.append(stream_url)
+
 with open("qq.m3u", "w", encoding="utf-8") as f: f.write("\n".join(qq_lines))
-print("🏁 全球源 qq.m3u 纯净版发布完毕！")
+print(f"⚡ qq.m3u 构建完成！")
