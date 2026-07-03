@@ -355,6 +355,10 @@ http://192.168.1.1:8888/rtp/225.0.4.178:7980
 http://192.168.1.1:8888/rtp/225.0.4.56:7980
 #EXTINF:-1 tvg-id="IPTV野外" tvg-name="IPTV野外" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/main/tv/logos/IPTV%E9%87%8E%E5%A4%96.png" group-title="🏠家庭内网组播线 [限家里用]",IPTV野外 [家庭组播] 🏠
 http://192.168.1.1:8888/rtp/225.0.4.57:7980
+#EXTINF:-1 tvg-id="CCTV3" tvg-name="CCTV3" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/main/tv/logos/CCTV3.png" group-title="🏢公网IPv4通用线 [公司/外网看这个]",CCTV3 [公网直连-v4] 🏢
+http://36.40.236.27:9999/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0
+#EXTINF:-1 tvg-id="山西卫视" tvg-name="山西卫视" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/main/tv/logos/%E5%B1%B1%E8%A5%BF%E5%8D%AB%E8%A7%86.png" group-title="🏢公网IPv4通用线 [公司/外网看这个]",山西卫视 [公网直连-v4] 🏢
+http://59.32.97.20:9901/tsfile/live/0118_1.m3u8?key=txiptv&playlive=1&authid=0
 #EXTINF:-1 tvg-id="蒙语卫视" tvg-name="蒙语卫视" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/main/tv/logos/%E8%92%99%E8%AF%AD%E5%8D%AB%E8%A7%86.png" group-title="🏢公网IPv4通用线 [公司/外网看这个]",蒙语卫视 [公网直连-v4] 🏢
 https://livestream-bt.nmtv.cn/nmtv/2315general.m3u8?txSecret=4971666599ef9411629213c9a300bf66&txTime=771EF880
 #EXTINF:-1 tvg-id="CCTV1" tvg-name="CCTV1" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/main/tv/logos/CCTV1.png" group-title="🚀公网IPv6备用线 [需网络支持IPv6]",CCTV-1综合 [全网备用-v6] 🚀
