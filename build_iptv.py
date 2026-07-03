@@ -11,6 +11,7 @@ import urllib.parse
 def clean_channel_name(name):
     if not name: return ""
     name = name.strip()
+    # 只剥离纯后缀/质量标签，保留类别词（少儿/新闻/体育等）防止误杀撞车
     name = re.sub(r'(HD|高清|超清|标清|频道|综合|[-—_ ‐\s]+|[\[\(].*?[\]\)])', '', name, flags=re.IGNORECASE)
     name = name.strip()
     if not name: return "Unknown"
@@ -18,43 +19,40 @@ def clean_channel_name(name):
     if cctv_match: return f"CCTV{cctv_match.group(1).upper()}"
     return name
 
-def safe_logo_url(std_name):
-    if not std_name: return ""
-    safe = urllib.parse.quote(std_name, safe='')
-    return f"https://raw.githubusercontent.com/fanmingming/live/main/tv/logos/{safe}.png"
-
 def verify_link(item):
+    # 动态支持可变长度解包，完美兼顾国内源和全球源的数据流转
     group_name, ch_name, url, *extra = item
     logo_url = extra[0] if len(extra) > 0 else ""
     tvg_id = extra[1] if len(extra) > 1 else ""
+    
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-    for _ in range(2):
+    for _ in range(2):  # 网络不稳定时自动触发一次重试
         try:
             with requests.head(url, timeout=3, allow_redirects=True, headers=headers) as res:
-                if res.status_code in [200, 206]:
+                if res.status_code in [200, 206]: 
                     return group_name, ch_name, url, logo_url, tvg_id
         except Exception: pass
         try:
             with requests.get(url, timeout=3, stream=True, headers=headers) as res:
-                if res.status_code in [200, 206]:
+                if res.status_code in [200, 206]: 
                     return group_name, ch_name, url, logo_url, tvg_id
         except Exception: pass
     return None
 
 GLOBAL_TRANSLATE = {
-    "CNN International": "🇺🇸 CNN 国际新闻",
-    "BBC News": "🇬🇧 BBC 世界新闻",
-    "BBC World News": "🇬🇧 BBC 世界新闻频道",
-    "Discovery Channel": "🇺🇸 探索频道",
-    "National Geographic": "🇺🇸 国家地理",
-    "HBO": "🇺🇸 HBO 电影台",
-    "CNBC": "🇺🇸 CNBC 财经",
-    "Bloomberg TV": "🇺🇸 彭博财经",
-    "NHK World Premium": "🇯🇵 NHK 世界精品",
-    "KBS World": "🇰🇷 KBS 国际台"
+    "CNN International": "🇺🇸 CNN 国际新闻", "BBC News": "🇬🇧 BBC 世界新闻",
+    "BBC World News": "🇬🇧 BBC 世界新闻频道", "Discovery Channel": "🇺🇸 探索频道",
+    "National Geographic": "🇺🇸 国家地理", "HBO": "🇺🇸 HBO 电影台",
+    "CNBC": "🇺🇸 CNBC 财经", "Bloomberg TV": "🇺🇸 彭博财经",
+    "NHK World Premium": "🇯🇵 NHK 世界精品", "KBS World": "🇰🇷 KBS 国际台"
 }
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+
+def safe_logo_url(std_name):
+    if not std_name: return ""
+    safe = urllib.parse.quote(std_name, safe='')
+    return f"https://raw.githubusercontent.com/fanmingming/live/main/tv/logos/{safe}.png"
 
 def fetch_with_retry(url, timeout=10, retries=2):
     for _ in range(retries):
@@ -65,12 +63,12 @@ def fetch_with_retry(url, timeout=10, retries=2):
     return None
 
 # =====================================================================
-# PART 1: 国内综合源 -> cn.m3u (强保720P/1080P + 10条备选线)
+# PART 1: 国内综合源 -> cn.m3u
 # =====================================================================
 print("========== 开始构建国内综合源 cn.m3u ==========")
 cn_lines = ['#EXTM3U x-tvg-url="https://raw.githubusercontent.com/fanmingming/live/main/e.xml"']
 
-# 1. 家庭组播线 (原生运营商1080P/4K源，最优先写入，不受公网限流影响)
+# 1. 家庭组播线（最先独立写入，保留重庆联通原生多备线，永不参与后续去重）
 raw_multicast = ""
 local_path = "Multicast/chongqing/unicom.txt"
 upstream_url = "https://raw.githubusercontent.com/xisohi/CHINA-IPTV/main/Multicast/chongqing/unicom.txt"
@@ -104,13 +102,12 @@ if raw_multicast:
         multicast_count += 1
     print(f"  家庭组播: {multicast_count} 条")
 
-# 2. 汇聚超清顶级公网源（全面升级大库，丢弃低质量源）
+# 2. 汇聚公网源（严选只提供 1080P/4K 的核心骨干库）
 public_sources = [
     "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u",     # 1080P 蓝光纯净骨干网源
     "https://raw.githubusercontent.com/yuanzl7/iptv/main/iptv.m3u",                # 百兆超清大厂源大库
     "https://raw.githubusercontent.com/YueChan/Live/main/APTV.m3u",                # 高画质精品混合源
-    "https://raw.githubusercontent.com/joevess/IPTV/main/m3u/iptv.m3u",             # 高清大厂CDN源
-    "https://raw.githubusercontent.com/ssili126/tv/main/itvlist.m3u"              # 稳定高清备用库
+    "https://raw.githubusercontent.com/joevess/IPTV/main/m3u/iptv.m3u"             # 高清大厂CDN源
 ]
 
 domestic_pool = []
@@ -132,9 +129,10 @@ for url in public_sources:
                     break
             if not url_line: continue
             
-            # 【高画质强力过滤拦截器】
-            # 如果频道名称或链接里包含“标清”、“SD”、“low”、“500k”等低清晰度标识，直接无视并丢弃
-            if any(kw in ch_name.lower() or kw in url_line.lower() for kw in ["标清", "sd", "low", "blur", "500k", "800k"]):
+            # 🔥【高精细度低清拦截过滤网】
+            # 任何名字或链接里夹杂低清、低码率、手机版标识的源，直接彻底抛弃！强保720P/1080P起步
+            low_res_kws = ["标清", "sd", "low", "blur", "500k", "800k", "1m", "1.5m", "mobile", "360p", "480p", "576p", "流畅", "极速", "ld", "bq", "标"]
+            if any(kw in ch_name.lower() or kw in url_line.lower() for kw in low_res_kws):
                 continue
                 
             if "CCTV" in ch_name or "卫视" in ch_name or "重庆" in ch_name:
@@ -142,43 +140,40 @@ for url in public_sources:
     else:
         print(f"  跳过: {url}")
 
-# 3. 策略分流与限流（放开限额：每个频道狂暴堆叠 10 条最强公网备线）
+# 3. 分流与限流：每个标准频道在 IPv4 和 IPv6 分组下最多只保留 10 条最优高清备线
 ipv4_by_channel = {}
 ipv6_by_channel = {}
 
 for ch_name, stream_url in domestic_pool:
-    std_name = clean_channel_name(ch_name)
-    if not std_name: continue
+    std_name = clean_channel_name(name=ch_name)
     bucket = ipv6_by_channel if ("[" in stream_url and "]" in stream_url) else ipv4_by_channel
     if std_name not in bucket: bucket[std_name] = []
-    
-    # 核心改动：线路改成 10 个备选
     if len(bucket[std_name]) < 10:
         bucket[std_name].append((ch_name, stream_url))
 
-# 4. 规范写入 cn.m3u (每组最多 10 条备线)
-ipv4_count = 0
+# 4. 写入外网分组
+import_v4_count = 0
 for std_name in sorted(ipv4_by_channel.keys()):
     logo_url = safe_logo_url(std_name)
     for ch_name, url in ipv4_by_channel[std_name]:
         cn_lines.append(f'#EXTINF:-1 tvg-id="{std_name}" tvg-name="{std_name}" tvg-logo="{logo_url}" group-title="🏢公网IPv4通用线 [公司/外网看这个]",{ch_name} [公网直连-v4] 🏢')
         cn_lines.append(url)
-        ipv4_count += 1
+        import_v4_count += 1
 
-ipv6_count = 0
+import_v6_count = 0
 for std_name in sorted(ipv6_by_channel.keys()):
     logo_url = safe_logo_url(std_name)
     for ch_name, url in ipv6_by_channel[std_name]:
         cn_lines.append(f'#EXTINF:-1 tvg-id="{std_name}" tvg-name="{std_name}" tvg-logo="{logo_url}" group-title="🚀公网IPv6备用线 [需网络支持IPv6]",{ch_name} [全网备用-v6] 🚀')
         cn_lines.append(url)
-        ipv6_count += 1
+        import_v6_count += 1
 
 with open("cn.m3u", "w", encoding="utf-8") as f: f.write("\n".join(cn_lines))
-print(f"⚡ cn.m3u 构建完成: 组播 {multicast_count} + IPv4 {ipv4_count} + IPv6 {ipv6_count}")
+print(f"⚡ cn.m3u: 组播 {multicast_count} + IPv4 {import_v4_count} + IPv6 {import_v6_count}")
 
 
 # =====================================================================
-# PART 2: 全球精选源 -> qq.m3u (保持不变，支持并发测速 + 汉化去重)
+# PART 2: 全球精选源 -> qq.m3u (支持台标 + tvg-id 完整下沉传递)
 # =====================================================================
 print("\n========== 开始构建全球精选源 qq.m3u ==========")
 iptv_org_urls = {
@@ -221,6 +216,7 @@ for group_name, url in iptv_org_urls.items():
     else:
         print(f"  {group_name}: 多次失败跳过")
 
+# 并发测速
 print(f"🚀 并发测速 {len(raw_global_items)} 条全球源...")
 valid_global = []
 with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executor:
@@ -228,16 +224,18 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executor:
     for r in results:
         if r: valid_global.append(r)
 
+# 写入全球源文件（按频道名深度精简去重）
 seen_global = set()
 qq_lines = ["#EXTM3U"]
 for group_name, ch_name, stream_url, logo_url, tvg_id in valid_global:
     key = f"{group_name}|{ch_name}"
     if key in seen_global: continue
     seen_global.add(key)
+    
     logo_attr = f' tvg-logo="{logo_url}"' if logo_url else ""
     tvgid_attr = f' tvg-id="{tvg_id}"' if tvg_id else ""
     qq_lines.append(f'#EXTINF:-1{tvgid_attr}{logo_attr} group-title="{group_name}",{ch_name} 🌐')
     qq_lines.append(stream_url)
 
 with open("qq.m3u", "w", encoding="utf-8") as f: f.write("\n".join(qq_lines))
-print(f"⚡ qq.m3u: 存活 {len(valid_global)} 条, 去重后 {len(seen_global)} 条")
+print(f"⚡ qq.m3u: 存活 {len(valid_global)} 条, 去重精简后最终保留 {len(seen_global)} 条")
