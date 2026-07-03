@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3U转TXT结果</title>
+    <script>
+        // 解析M3U文件为TXT格式
+        function parseM3UToTXT(m3uContent) {
+            const lines = m3uContent.split('\n');
+            const channels = {};
+            let currentGroup = '未分组';
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (line.startsWith('#EXTINF:-1')) {
+                    const groupMatch = line.match(/group-title="([^"]*)"/);
+                    const nameMatch = line.match(/tvg-name="([^"]*)"/);
+                    const group = groupMatch ? groupMatch[1] : currentGroup;
+                    const name = nameMatch ? nameMatch[1] : line.split(',').pop();
+                    const url = lines[i + 1] ? lines[i + 1].trim() : '';
+
+                    if (url && url.length > 0) {
+                        if (!channels[group]) {
+                            channels[group] = [];
+                        }
+                        channels[group].push(`${name},${url}`);
+                        currentGroup = group;
+                    }
+                }
+            }
+
+            let txtContent = '';
+            for (const [group, channelList] of Object.entries(channels)) {
+                txtContent += `${group},#genre#\n`;
+                txtContent += channelList.join('\n') + '\n\n';
+            }
+
+            return txtContent.trim();
+        }
+
+        // 获取URL参数
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // 页面加载完成后执行
+        window.addEventListener('DOMContentLoaded', async function() {
+            const m3uUrl = getQueryParam('url');
+
+            if (!m3uUrl) {
+                document.body.textContent = '错误：URL参数中未提供M3U文件地址，请使用格式: /txt?url=您的M3U文件URL';
+                return;
+            }
+
+            try {
+                // 获取M3U文件内容
+                const response = await fetch(m3uUrl);
+                if (!response.ok) {
+                    throw new Error(`无法获取文件: ${response.status} ${response.statusText}`);
+                }
+
+                const m3uContent = await response.text();
+
+                // 解析为TXT格式
+                const txtContent = parseM3UToTXT(m3uContent);
+
+                // 将结果写入HTML源代码
+                document.write(`<pre>${txtContent}</pre>`);
+
+                // 设置页面标题为结果摘要
+                const groups = txtContent.match(/.+,#genre#/g) || [];
+                document.title = `M3U转TXT结果 - ${groups.length}个分组`;
+            } catch (error) {
+                document.body.textContent = `转换失败: ${error.message}`;
+            }
+        });
+    </script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: monospace;
+            background: #f0f2f5;
+        }
+        pre {
+            margin: 0;
+            padding: 20px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-size: 14px;
+            line-height: 1.5;
+            background: white;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<!-- 页面加载时显示简单提示 -->
+<script>
+    document.write('正在加载并转换M3U文件，请稍候...');
+</script>
+</body>
+</html>

@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>直播源文件合并排序工具 - 支持网址导入</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .main-content {
+            padding: 30px;
+        }
+        .file-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .status-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 4px solid #6c757d;
+        }
+        .status-card.success {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+        .status-card.warning {
+            border-left-color: #ffc107;
+            background: #fff3cd;
+        }
+        .status-card.error {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+        .status-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            color: #495057;
+        }
+        .status-card .file-path {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        .status-card .file-status {
+            font-weight: bold;
+        }
+        .upload-section {
+            margin-bottom: 30px;
+        }
+        .upload-box {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .upload-box:hover {
+            border-color: #667eea;
+            background: #e8f0fe;
+        }
+        .upload-box.dragover {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+        .upload-box h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .upload-box .file-info {
+            font-size: 1em;
+            color: #6c757d;
+            margin-top: 15px;
+        }
+        .upload-box .file-name {
+            font-weight: bold;
+            color: #28a745;
+        }
+        /* 新增 URL 导入区域样式 */
+        .url-import-area {
+            margin-top: 20px;
+            background: #f1f3f5;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+        }
+        .url-import-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .url-input-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .url-input-group input {
+            flex: 4;
+            min-width: 200px;
+            padding: 12px 16px;
+            border: 1px solid #ced4da;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            outline: none;
+        }
+        .url-input-group input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
+        }
+        .url-input-group button {
+            flex: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+            font-size: 0.95rem;
+        }
+        .url-input-group button:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+        .url-input-group button:disabled {
+            opacity: 0.6;
+            transform: none;
+            cursor: not-allowed;
+        }
+        .url-hint {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .url-hint code {
+            background: #e9ecef;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+        .file-list {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .file-list h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.2em;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .file-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 18px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            transition: all 0.2s;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .file-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .file-item-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .file-item-name {
+            font-weight: bold;
+            color: #495057;
+            font-size: 1.1em;
+            word-break: break-all;
+            max-width: 280px;
+        }
+        .file-item-type {
+            font-size: 0.85em;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: #e9ecef;
+            color: #495057;
+        }
+        .file-item-count {
+            font-size: 0.95em;
+            color: #28a745;
+            background: #d4edda;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .file-item-size {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        .file-item-remove {
+            color: #dc3545;
+            cursor: pointer;
+            padding: 5px 12px;
+            border-radius: 5px;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+        .file-item-remove:hover {
+            background: #f8d7da;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin: 10px;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .btn-secondary {
+            background: #6c757d;
+        }
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: scale(1.05);
+        }
+        .btn-danger {
+            background: #dc3545;
+        }
+        .btn-danger:hover {
+            background: #c82333;
+        }
+        .preview-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .preview-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .preview-box h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.1em;
+        }
+        .preview-box textarea {
+            width: 100%;
+            height: 400px;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            resize: vertical;
+            background: white;
+        }
+        .preview-box textarea:read-only {
+            background: #f8f9fa;
+        }
+        .download-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+        .download-btn:hover {
+            background: #218838;
+        }
+        .status {
+            margin: 20px 0;
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: none;
+            font-size: 1em;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+        .mapping-editor {
+            margin-top: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .mapping-editor h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.2em;
+        }
+        .mapping-editor textarea {
+            width: 100%;
+            height: 150px;
+            padding: 12px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 25px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 160px;
+            text-align: center;
+        }
+        .stat-card .label {
+            font-size: 1em;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+        .stat-card .value {
+            font-size: 2.2em;
+            font-weight: bold;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            font-size: 0.95em;
+        }
+        @media (max-width: 768px) {
+            .preview-section {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+            .upload-box {
+                padding: 30px 20px;
+            }
+            .file-item-info {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📺 直播源文件合并排序工具</h1>
+        <p>支持本地文件上传 + 网址导入 | 合并、去重、按模板排序 | 自动加载 /TV/ 目录模板和映射表</p>
+    </div>
+
+    <div class="main-content">
+        <!-- 文件状态卡片 -->
+        <div class="file-status">
+            <div class="status-card" id="templateStatus">
+                <h4>📋 模板文件</h4>
+                <div class="file-path">/TV/moban.txt</div>
+                <div class="file-status" id="templateStatusText">加载中...</div>
+            </div>
+            <div class="status-card" id="mappingStatus">
+                <h4>🔄 映射表文件</h4>
+                <div class="file-path">/TV/channel_mapping.txt</div>
+                <div class="file-status" id="mappingStatusText">加载中...</div>
+            </div>
+            <div class="status-card" id="sourceStatus">
+                <h4>📡 直播源文件</h4>
+                <div class="file-path">已上传 <span id="fileCount">0</span> 个文件</div>
+                <div class="file-status" id="sourceStatusText">等待上传/导入</div>
+            </div>
+        </div>
+
+        <!-- 文件上传区域 + 网址导入区 -->
+        <div class="upload-section">
+            <div class="upload-box" id="sourceDropZone">
+                <h3>📁 点击或拖拽上传直播源文件</h3>
+                <p style="color: #666; margin: 10px 0;">支持 .txt .m3u .m3u8 格式 | 可同时选择多个文件</p>
+                <input type="file" id="sourceFile" multiple accept=".txt,.m3u,.m3u8" style="display: none;">
+                <div id="sourceFileInfo" class="file-info">
+                    <span style="color: #999;">未选择任何文件</span>
+                </div>
+            </div>
+
+            <!-- 新增：网址导入区域 -->
+            <div class="url-import-area">
+                <div class="url-import-title">
+                    🌐 从网址导入直播源
+                    <span style="font-size: 0.75rem; background: #e2e6ea; padding: 2px 8px; border-radius: 30px;">支持 .txt / .m3u / .m3u8</span>
+                </div>
+                <div class="url-input-group">
+                    <input type="text" id="urlInput" placeholder="例如: https://example.com/live.m3u 或 http://xxx.com/tv.txt" value="">
+                    <button id="addUrlBtn">➕ 添加URL源</button>
+                </div>
+                <div class="url-hint">
+                    💡 提示：直接填入直播源文件链接，自动获取内容并合并排序（注意部分链接可能存在跨域限制，如失败请手动下载后上传）
+                    <code>支持m3u/txt格式</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- 已上传文件列表 -->
+        <div class="file-list" id="fileList" style="display: none;">
+            <h3>
+                📋 已上传文件列表
+                <div>
+                    <button class="btn-secondary" id="previewMergedBtn" style="padding: 6px 15px; font-size: 0.9em; margin-right: 10px;">👁️ 预览合并</button>
+                    <button class="btn-danger" id="clearAllFiles" style="padding: 6px 15px; font-size: 0.9em;">🗑️ 清空所有</button>
+                </div>
+            </h3>
+            <div class="file-items" id="fileItems"></div>
+        </div>
+
+        <!-- 映射表编辑区 -->
+        <div class="mapping-editor">
+            <h3>
+                ✏️ 频道名称映射表
+                <button class="btn-secondary" id="resetMappingBtn" style="padding: 6px 15px; font-size: 0.9em;">🔄 重置为默认</button>
+            </h3>
+            <textarea id="mappingEditor" placeholder="格式：原始名称,标准化名称&#10;例如：CCTV1综合,CCTV1&#10;CCTV-1HD,CCTV1" rows="5"></textarea>
+        </div>
+
+        <!-- 统计信息 -->
+        <div class="stats" id="stats" style="display: none;">
+            <div class="stat-card">
+                <div class="label">总频道数</div>
+                <div class="value" id="totalChannels">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">匹配频道</div>
+                <div class="value" id="matchedChannels">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">未分类频道</div>
+                <div class="value" id="unmatchedChannels">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">合并文件数</div>
+                <div class="value" id="fileCount2">0</div>
+            </div>
+        </div>
+
+        <!-- 状态提示 -->
+        <div id="statusMessage" class="status"></div>
+
+        <!-- 操作按钮 -->
+        <div class="action-buttons">
+            <button class="btn" id="processBtn" disabled>🔄 开始合并排序处理</button>
+        </div>
+
+        <!-- 预览区域 -->
+        <div class="preview-section">
+            <div class="preview-box">
+                <h3>
+                    📄 合并后原始文件预览
+                    <span class="file-name" id="mergedFileName"></span>
+                </h3>
+                <textarea id="sourcePreview" readonly placeholder="点击'预览合并'按钮查看合并后的原始内容..."></textarea>
+            </div>
+            <div class="preview-box">
+                <h3>
+                    ✨ 排序后文件预览
+                    <button class="download-btn" id="downloadBtn" style="display: none;">⬇️ 下载排序结果</button>
+                </h3>
+                <textarea id="resultPreview" readonly placeholder="排序处理后的结果..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        ⚡ 自动加载 /TV/moban.txt 和 /TV/channel_mapping.txt | 支持多文件合并、去重 | 支持TXT、M3U、M3U8格式 | 新增网址导入
+    </div>
+</div>
+
+<script>
+    // DOM元素
+    const sourceDropZone = document.getElementById('sourceDropZone');
+    const sourceFileInput = document.getElementById('sourceFile');
+    const sourceFileInfo = document.getElementById('sourceFileInfo');
+    const mappingEditor = document.getElementById('mappingEditor');
+    const resetMappingBtn = document.getElementById('resetMappingBtn');
+    const processBtn = document.getElementById('processBtn');
+    const previewMergedBtn = document.getElementById('previewMergedBtn');
+    const statusMessage = document.getElementById('statusMessage');
+    const sourcePreview = document.getElementById('sourcePreview');
+    const resultPreview = document.getElementById('resultPreview');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const stats = document.getElementById('stats');
+    const totalChannels = document.getElementById('totalChannels');
+    const matchedChannels = document.getElementById('matchedChannels');
+    const unmatchedChannels = document.getElementById('unmatchedChannels');
+    const fileCount2 = document.getElementById('fileCount2');
+    const fileList = document.getElementById('fileList');
+    const fileItems = document.getElementById('fileItems');
+    const clearAllFiles = document.getElementById('clearAllFiles');
+    const fileCount = document.getElementById('fileCount');
+    // 新增元素
+    const urlInput = document.getElementById('urlInput');
+    const addUrlBtn = document.getElementById('addUrlBtn');
+
+    // 状态卡片元素
+    const templateStatus = document.getElementById('templateStatus');
+    const mappingStatus = document.getElementById('mappingStatus');
+    const sourceStatus = document.getElementById('sourceStatus');
+    const templateStatusText = document.getElementById('templateStatusText');
+    const mappingStatusText = document.getElementById('mappingStatusText');
+    const sourceStatusText = document.getElementById('sourceStatusText');
+
+    // 存储上传的文件 (包含本地上传 + 网络导入)
+    let uploadedFiles = [];
+    let templateContent = '';
+    let mappingContent = '';
+
+    // 默认映射表内容
+    const defaultMapping = `cctv1,CCTV1
+CCTV1综合,CCTV1
+CCTV-1综合,CCTV1
+CCTV1综合频道,CCTV1
+CCTV-1HD,CCTV1
+CCTV1HD,CCTV1
+cctv2,CCTV2
+CCTV2财经,CCTV2
+cctv3,CCTV3
+CCTV3综艺,CCTV3
+cctv4,CCTV4
+CCTV4中文国际,CCTV4
+cctv5,CCTV5
+CCTV5体育,CCTV5
+cctv5+,CCTV5+
+CCTV5+体育赛事,CCTV5+
+cctv5p,CCTV5+
+cctv6,CCTV6
+CCTV6电影,CCTV6
+cctv7,CCTV7
+CCTV7国防军事,CCTV7
+cctv8,CCTV8
+CCTV8电视剧,CCTV8
+cctv9,CCTV9
+CCTV9纪录,CCTV9
+cctv10,CCTV10
+CCTV10科教,CCTV10
+cctv11,CCTV11
+CCTV11戏曲,CCTV11
+cctv12,CCTV12
+CCTV12社会与法,CCTV12
+cctv13,CCTV13
+CCTV13新闻,CCTV13
+cctv14,CCTV14
+CCTV14少儿,CCTV14
+cctv15,CCTV15
+CCTV15音乐,CCTV15
+cctv16,CCTV16
+CCTV16奥林匹克,CCTV16
+cctv17,CCTV17
+CCTV17农业农村,CCTV17`;
+
+    // 默认模板内容
+    const defaultTemplate = `央视,#genre#
+CCTV1
+CCTV2
+CCTV3
+CCTV4
+CCTV5
+CCTV5+
+CCTV6
+CCTV7
+CCTV8
+CCTV9
+CCTV10
+CCTV11
+CCTV12
+CCTV13
+CCTV14
+CCTV15
+CCTV16
+CCTV17
+CGTN
+CGTN西语
+CGTN法语
+CGTN俄语
+CGTN阿语
+CGTN纪录
+卫视,#genre#
+安徽卫视
+北京卫视
+重庆卫视
+东方卫视
+东南卫视
+甘肃卫视
+广东卫视
+广西卫视
+贵州卫视
+海南卫视
+河北卫视
+河南卫视
+黑龙江卫视
+湖北卫视
+湖南卫视
+吉林卫视
+江苏卫视
+江西卫视
+辽宁卫视
+内蒙古卫视
+宁夏卫视
+青海卫视
+厦门卫视
+山东卫视
+山西卫视
+陕西卫视
+深圳卫视
+四川卫视
+天津卫视
+西藏卫视
+新疆卫视
+云南卫视
+浙江卫视`;
+
+    // 自动加载TV目录下的文件
+    async function loadTVFiles() {
+        try {
+            const templateResponse = await fetch('/TV/moban.txt');
+            if (templateResponse.ok) {
+                templateContent = await templateResponse.text();
+                templateStatus.className = 'status-card success';
+                templateStatusText.innerHTML = '✅ 已加载';
+            } else {
+                templateStatus.className = 'status-card warning';
+                templateStatusText.innerHTML = '⚠️ 未找到，将使用默认模板';
+                templateContent = defaultTemplate;
+            }
+        } catch (error) {
+            templateStatus.className = 'status-card warning';
+            templateStatusText.innerHTML = '⚠️ 加载失败，将使用默认模板';
+            templateContent = defaultTemplate;
+        }
+
+        try {
+            const mappingResponse = await fetch('/TV/channel_mapping.txt');
+            if (mappingResponse.ok) {
+                mappingContent = await mappingResponse.text();
+                mappingStatus.className = 'status-card success';
+                mappingStatusText.innerHTML = '✅ 已加载';
+                mappingEditor.value = mappingContent;
+            } else {
+                mappingStatus.className = 'status-card success';
+                mappingStatusText.innerHTML = '✅ 使用默认映射表';
+                mappingEditor.value = defaultMapping;
+            }
+        } catch (error) {
+            mappingStatus.className = 'status-card success';
+            mappingStatusText.innerHTML = '✅ 使用默认映射表';
+            mappingEditor.value = defaultMapping;
+        }
+
+        checkFiles();
+    }
+
+    // 文件上传处理 (原有)
+    function setupDropZone(zone, input, infoElement) {
+        zone.addEventListener('click', () => input.click());
+        zone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            zone.classList.add('dragover');
+        });
+        zone.addEventListener('dragleave', () => {
+            zone.classList.remove('dragover');
+        });
+        zone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            zone.classList.remove('dragover');
+            const files = Array.from(e.dataTransfer.files);
+            handleFiles(files);
+        });
+        input.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            handleFiles(files);
+        });
+    }
+
+    function handleFiles(files) {
+        files.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                uploadedFiles.push({
+                    name: file.name,
+                    content: e.target.result,
+                    type: file.name.split('.').pop().toLowerCase(),
+                    size: file.size,
+                    isUrlSource: false
+                });
+                updateFileList();
+                checkFiles();
+            };
+            reader.readAsText(file, 'UTF-8');
+        });
+        sourceFileInfo.innerHTML = `📄 已添加 ${files.length} 个文件`;
+    }
+
+    // 更新文件列表显示
+    function updateFileList() {
+        if (uploadedFiles.length > 0) {
+            fileList.style.display = 'block';
+            fileCount.textContent = uploadedFiles.length;
+            sourceStatus.className = 'status-card success';
+            sourceStatusText.innerHTML = `✅ ${uploadedFiles.length} 个文件（含网络源）`;
+
+            fileItems.innerHTML = uploadedFiles.map((file, index) => {
+                let channelCount = 0;
+                if (file.type === 'm3u' || file.type === 'm3u8') {
+                    channelCount = (file.content.match(/#EXTINF/g) || []).length;
+                } else {
+                    channelCount = file.content.split('\n').filter(line =>
+                        line.trim() && !line.includes(',#genre#')
+                    ).length;
+                }
+                const displayName = file.isUrlSource ? `🌐 ${file.name}` : `📁 ${file.name}`;
+                return `
+                    <div class="file-item">
+                        <div class="file-item-info">
+                            <span class="file-item-name" title="${file.name}">${displayName}</span>
+                            <span class="file-item-type">${file.type}</span>
+                            <span class="file-item-count">${channelCount} 个频道</span>
+                            <span class="file-item-size">${(file.size / 1024).toFixed(1)} KB</span>
+                        </div>
+                        <div class="file-item-remove" onclick="removeFile(${index})">✖ 移除</div>
+                    </div>
+                `;
+            }).join('');
+            fileCount2.textContent = uploadedFiles.length;
+        } else {
+            fileList.style.display = 'none';
+            fileCount.textContent = '0';
+            sourceStatus.className = 'status-card';
+            sourceStatusText.innerHTML = '等待上传/导入';
+        }
+        previewMergedBtn.disabled = uploadedFiles.length === 0;
+    }
+
+    window.removeFile = function(index) {
+        uploadedFiles.splice(index, 1);
+        updateFileList();
+        checkFiles();
+        if (uploadedFiles.length === 0) {
+            sourcePreview.value = '';
+            resultPreview.value = '';
+            downloadBtn.style.display = 'none';
+            stats.style.display = 'none';
+            sourceFileInfo.innerHTML = '<span style="color: #999;">未选择任何文件</span>';
+        }
+    };
+
+    clearAllFiles.addEventListener('click', () => {
+        uploadedFiles = [];
+        updateFileList();
+        checkFiles();
+        sourcePreview.value = '';
+        resultPreview.value = '';
+        downloadBtn.style.display = 'none';
+        stats.style.display = 'none';
+        sourceFileInfo.innerHTML = '<span style="color: #999;">未选择任何文件</span>';
+        showStatus('info', '已清空所有文件');
+    });
+
+    function mergeFiles() {
+        let mergedContent = '';
+        uploadedFiles.forEach(file => {
+            mergedContent += `# ===== 文件: ${file.name} =====\n`;
+            mergedContent += file.content;
+            mergedContent += '\n\n';
+        });
+        return mergedContent;
+    }
+
+    previewMergedBtn.addEventListener('click', () => {
+        if (uploadedFiles.length === 0) return;
+        const merged = mergeFiles();
+        sourcePreview.value = merged;
+        showStatus('info', `📊 已合并 ${uploadedFiles.length} 个文件，可在上方预览`);
+    });
+
+    resetMappingBtn.addEventListener('click', () => {
+        mappingEditor.value = defaultMapping;
+        showStatus('info', '✅ 已重置为默认映射表');
+    });
+
+    setupDropZone(sourceDropZone, sourceFileInput, sourceFileInfo);
+
+    function checkFiles() {
+        if (templateContent && uploadedFiles.length > 0) {
+            processBtn.disabled = false;
+            showStatus('info', `✅ 文件已就绪，共 ${uploadedFiles.length} 个文件，点击"开始合并排序处理"`);
+        } else {
+            processBtn.disabled = true;
+            if (!templateContent && uploadedFiles.length === 0) {
+                showStatus('error', '❌ 模板文件未加载，请先上传直播源');
+            } else if (!templateContent) {
+                showStatus('error', '❌ 模板文件未加载');
+            } else if (uploadedFiles.length === 0) {
+                showStatus('info', '📁 请上传直播源文件或通过网址导入');
+            }
+        }
+    }
+
+    function showStatus(type, message) {
+        statusMessage.className = 'status ' + type;
+        statusMessage.textContent = message;
+    }
+
+    // 解析函数 (原有 parseMapping, parseTemplate, parseM3U, parseTXT, parseAllFiles, processSorting 保持不变)
+    function parseMapping(content) {
+        const mapping = {};
+        const lines = content.split('\n');
+        lines.forEach(line => {
+            line = line.trim();
+            if (line && line.includes(',')) {
+                const [oldName, newName] = line.split(',').map(s => s.trim());
+                if (oldName && newName) mapping[oldName] = newName;
+            }
+        });
+        return mapping;
+    }
+    function parseTemplate(content) {
+        const categories = {};
+        let currentCategory = '';
+        const lines = content.split('\n');
+        lines.forEach(line => {
+            line = line.trim();
+            if (!line) return;
+            if (line.includes(',#genre#')) {
+                currentCategory = line.split(',')[0].trim();
+                categories[currentCategory] = [];
+            } else if (currentCategory && line) {
+                categories[currentCategory].push(line);
+            }
+        });
+        return categories;
+    }
+    function parseM3U(content) {
+        const lines = content.split('\n');
+        const channels = [];
+        const seen = new Set();
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (line.startsWith('#EXTINF:-1')) {
+                let name = '';
+                const nameMatch = line.match(/tvg-name="([^"]*)"/);
+                if (nameMatch) name = nameMatch[1];
+                else {
+                    const lastComma = line.lastIndexOf(',');
+                    if (lastComma !== -1) name = line.substring(lastComma + 1).trim();
+                }
+                if (i + 1 < lines.length) {
+                    let url = lines[i + 1].trim();
+                    if (url && !url.startsWith('#')) {
+                        const channelLine = `${name},${url}`;
+                        if (!seen.has(url)) {
+                            channels.push(channelLine);
+                            seen.add(url);
+                        }
+                    }
+                }
+            }
+        }
+        return channels;
+    }
+    function parseTXT(content) {
+        const lines = content.split('\n');
+        const channels = [];
+        const seen = new Set();
+        lines.forEach(line => {
+            line = line.trim();
+            if (line && !line.includes(',#genre#')) {
+                const parts = line.split(',');
+                if (parts.length >= 2) {
+                    const url = parts.slice(1).join(',');
+                    if (!seen.has(url)) {
+                        channels.push(line);
+                        seen.add(url);
+                    }
+                } else channels.push(line);
+            }
+        });
+        return channels;
+    }
+    function parseAllFiles() {
+        let allChannels = [];
+        const seenUrls = new Set();
+        uploadedFiles.forEach(file => {
+            let channels = [];
+            if (file.type === 'm3u' || file.type === 'm3u8') channels = parseM3U(file.content);
+            else channels = parseTXT(file.content);
+            channels.forEach(channel => {
+                const parts = channel.split(',');
+                if (parts.length >= 2) {
+                    const url = parts.slice(1).join(',');
+                    if (!seenUrls.has(url)) {
+                        allChannels.push(channel);
+                        seenUrls.add(url);
+                    }
+                } else allChannels.push(channel);
+            });
+        });
+        return allChannels;
+    }
+    function processSorting() {
+        try {
+            const mapping = parseMapping(mappingEditor.value);
+            const categories = parseTemplate(templateContent);
+            const allLines = parseAllFiles();
+            const mappedLines = allLines.map(line => {
+                const parts = line.split(',');
+                if (parts.length >= 2) {
+                    const originalName = parts[0];
+                    const url = parts.slice(1).join(',');
+                    const mappedName = mapping[originalName] || originalName;
+                    return `${mappedName},${url}`;
+                }
+                return line;
+            });
+            const matchedLines = new Set();
+            const sortedContent = [];
+            for (const [category, channels] of Object.entries(categories)) {
+                sortedContent.push(`${category},#genre#`);
+                for (const channel of channels) {
+                    const channelPattern = channel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    const regex = new RegExp(`^\\s*${channelPattern}\\s*,`, 'i');
+                    for (const line of mappedLines) {
+                        if (regex.test(line) && !matchedLines.has(line)) {
+                            sortedContent.push(line);
+                            matchedLines.add(line);
+                        }
+                    }
+                }
+                sortedContent.push('');
+            }
+            const unmatchedLines = mappedLines.filter(line => !matchedLines.has(line));
+            if (unmatchedLines.length > 0) {
+                sortedContent.push('其它,#genre#');
+                const groupedChannels = {};
+                unmatchedLines.forEach(line => {
+                    const parts = line.split(',');
+                    const channelName = parts.length >= 2 ? parts[0] : '未知';
+                    if (!groupedChannels[channelName]) groupedChannels[channelName] = [];
+                    groupedChannels[channelName].push(line);
+                });
+                const sortedChannelNames = Object.keys(groupedChannels).sort((a, b) => {
+                    const aNum = parseInt(a.replace(/\D/g, '')) || 0;
+                    const bNum = parseInt(b.replace(/\D/g, '')) || 0;
+                    if (aNum && bNum) return aNum - bNum;
+                    return a.localeCompare(b, 'zh-CN');
+                });
+                sortedChannelNames.forEach(channelName => {
+                    groupedChannels[channelName].forEach(line => sortedContent.push(line));
+                });
+                sortedContent.push('');
+            }
+            totalChannels.textContent = mappedLines.length;
+            matchedChannels.textContent = matchedLines.size;
+            unmatchedChannels.textContent = unmatchedLines.length;
+            fileCount2.textContent = uploadedFiles.length;
+            stats.style.display = 'flex';
+            const result = sortedContent.join('\n');
+            resultPreview.value = result;
+            downloadBtn.style.display = 'inline-block';
+            showStatus('success', `✅ 处理完成！合并 ${uploadedFiles.length} 个文件，去重后共 ${mappedLines.length} 个频道，匹配 ${matchedLines.size} 个频道`);
+        } catch (error) {
+            showStatus('error', `❌ 处理出错: ${error.message}`);
+            console.error(error);
+        }
+    }
+
+    function downloadResult() {
+        const content = resultPreview.value;
+        if (!content) return;
+        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `merged_sorted_${new Date().toISOString().slice(0,10)}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    // ---------- 新增: 根据URL获取内容并添加为源 ----------
+    async function addUrlSource(rawUrl) {
+        let url = rawUrl.trim();
+        if (!url) {
+            showStatus('error', '❌ 请输入有效的URL地址');
+            return;
+        }
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+            url = 'https://' + url;
+        }
+        addUrlBtn.disabled = true;
+        addUrlBtn.textContent = '⏳ 获取中...';
+        showStatus('info', `⏳ 正在获取: ${url}`);
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000);
+            const response = await fetch(url, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const content = await response.text();
+            if (!content || content.trim().length === 0) throw new Error('内容为空');
+            // 简单校验是否为直播源文本 (至少包含http或#EXTINF)
+            const hasUrlPattern = /https?:\/\//i.test(content);
+            const hasM3uTag = content.includes('#EXTINF');
+            if (!hasUrlPattern && !hasM3uTag && content.split('\n').length < 5) {
+                throw new Error('内容可能不是直播源文件，缺少链接特征');
+            }
+            // 判断类型
+            let fileType = 'txt';
+            const lowerUrl = url.toLowerCase();
+            if (lowerUrl.endsWith('.m3u') || lowerUrl.endsWith('.m3u8') || hasM3uTag) fileType = 'm3u';
+            else if (lowerUrl.endsWith('.txt')) fileType = 'txt';
+            else if (hasM3uTag) fileType = 'm3u';
+            // 生成简洁文件名
+            let shortName = url.replace(/^https?:\/\//, '').split('/')[0];
+            if (url.split('/').pop().length > 0) shortName = url.split('/').pop();
+            const fileName = `[网络] ${shortName} (${fileType.toUpperCase()})`;
+            uploadedFiles.push({
+                name: fileName,
+                content: content,
+                type: fileType,
+                size: new Blob([content]).size,
+                isUrlSource: true,
+                sourceUrl: url
+            });
+            updateFileList();
+            checkFiles();
+            showStatus('success', `✅ 成功导入: ${fileName} (${(content.length/1024).toFixed(1)} KB)`);
+            urlInput.value = '';
+        } catch (err) {
+            let errMsg = err.message;
+            if (err.name === 'AbortError') errMsg = '请求超时(15秒)';
+            showStatus('error', `❌ 导入失败: ${errMsg}。可能由于跨域限制或链接无效，建议下载后上传。`);
+            console.error(err);
+        } finally {
+            addUrlBtn.disabled = false;
+            addUrlBtn.textContent = '➕ 添加URL源';
+        }
+    }
+
+    addUrlBtn.addEventListener('click', () => {
+        addUrlSource(urlInput.value);
+    });
+    urlInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') addUrlSource(urlInput.value);
+    });
+
+    processBtn.addEventListener('click', processSorting);
+    downloadBtn.addEventListener('click', downloadResult);
+    loadTVFiles();
+</script>
+</body>
+</html>

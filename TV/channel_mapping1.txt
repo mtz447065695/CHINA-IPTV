@@ -1,0 +1,626 @@
+cctv1,CCTV1
+cctv-1,CCTV1
+CCTV-1,CCTV1
+CCTV1高清,CCTV1
+CCTV-1高清,CCTV1
+CCTV-1 高清,CCTV1
+CCTV1综合,CCTV1
+CCTV-1综合,CCTV1
+CCTV-1综合高清,CCTV1
+CCTV-1 综合,CCTV1
+CCTV1综合频道,CCTV1
+CCTV-1HD,CCTV1
+CCTV1HD,CCTV1
+cctv2,CCTV2
+CCTV2HD,CCTV2
+cctv-2,CCTV2
+CCTV-2,CCTV2
+CCTV-2HD,CCTV2
+CCTV2高清,CCTV2
+CCTV-2高清,CCTV2
+CCTV-2 高清,CCTV2
+CCTV2财经,CCTV2
+CCTV-2财经,CCTV2
+CCTV-2财经高清,CCTV2
+CCTV-2 财经,CCTV2
+cctv3,CCTV3
+CCTV3HD,CCTV3
+cctv-3,CCTV3
+CCTV-3,CCTV3
+CCTV-3HD,CCTV3
+CCTV3高清,CCTV3
+CCTV-3高清,CCTV3
+CCTV-3 高清,CCTV3
+CCTV3综艺,CCTV3
+CCTV-3综艺,CCTV3
+CCTV-3综艺高清,CCTV3
+CCTV-3 综艺,CCTV3
+cctv4,CCTV4
+CCTV4HD,CCTV4
+cctv-4,CCTV4
+CCTV-4,CCTV4
+CCTV4高清,CCTV4
+CCTV-4高清,CCTV4
+CCTV-4 高清,CCTV4
+CCTV4中文国际,CCTV4
+CCTV-4中文国际,CCTV4
+CCTV-4 中文国际,CCTV4
+CCTV4EUO,CCTV4欧洲
+CCTV4欧洲,CCTV4欧洲
+CCTV-4欧洲,CCTV4欧洲
+CCTV4中文国际欧洲,CCTV4欧洲
+CCTV4 中文国际欧洲,CCTV4欧洲
+CCTV4中文国际欧洲高清,CCTV4欧洲
+CCTV4AME,CCTV4美洲
+CCTV4美洲,CCTV4美洲
+CCTV-4美洲,CCTV4美洲
+CCTV4中文国际美洲,CCTV4美洲
+CCTV4 中文国际美洲,CCTV4美洲
+CCTV4中文国际美洲高清,CCTV4美洲
+cctv5,CCTV5
+CCTV5HD,CCTV5
+cctv-5,CCTV5
+CCTV-5,CCTV5
+CCTV-5HD,CCTV5
+CCTV5高清,CCTV5
+CCTV-5高清,CCTV5
+CCTV-5 高清,CCTV5
+CCTV5体育,CCTV5
+CCTV-5体育,CCTV5
+CCTV-5体育高清,CCTV5
+CCTV-5 体育,CCTV5
+CCTV5＋,CCTV5+
+cctv5+,CCTV5+
+CCTV5+HD,CCTV5+
+cctv-5+,CCTV5+
+CCTV-5+,CCTV5+
+CCTV-5+HD,CCTV5+
+CCTV5+高清,CCTV5+
+CCTV-5+高清,CCTV5+
+CCTV5+体育高清,CCTV5+
+CCTV5+体育赛事,CCTV5+
+CCTV-5+体育赛事,CCTV5+
+CCTV-5+ 体育赛事,CCTV5+
+cctv5p,CCTV5+
+cctv6,CCTV6
+CCTV6HD,CCTV6
+cctv-6,CCTV6
+CCTV-6,CCTV6
+CCTV-6HD,CCTV6
+CCTV6高清,CCTV6
+CCTV-6高清,CCTV6
+CCTV-6 高清,CCTV6
+CCTV6电影,CCTV6
+CCTV-6电影,CCTV6
+CCTV-6电影高清,CCTV6
+CCTV-6 电影,CCTV6
+cctv7,CCTV7
+CCTV7HD,CCTV7
+cctv-7,CCTV7
+CCTV-7,CCTV7
+CCTV-7HD,CCTV7
+CCTV7高清,CCTV7
+CCTV-7高清,CCTV7
+CCTV-7 高清,CCTV7
+CCTV7国防军事,CCTV7
+CCTV-7国防军事,CCTV7
+CCTV-7国防军事高清,CCTV7
+CCTV-7 国防军事,CCTV7
+CCTV-7国防军事高清,CCTV7
+cctv8,CCTV8
+CCTV8HD,CCTV8
+cctv-8,CCTV8
+CCTV-8,CCTV8
+CCTV-8HD,CCTV8
+CCTV8高清,CCTV8
+CCTV-8高清,CCTV8
+CCTV8电视剧,CCTV8
+CCTV-8电视剧,CCTV8
+CCTV-8电视剧高清,CCTV8
+CCTV-8 电视剧,CCTV8
+cctv9,CCTV9
+CCTV9HD,CCTV9
+cctv-9,CCTV9
+CCTV-9,CCTV9
+CCTV-9HD,CCTV9
+CCTV9高清,CCTV9
+CCTV-9高清,CCTV9
+CCTV9纪录,CCTV9
+CCTV-9记录,CCTV9
+CCTV-9记录高清,CCTV9
+CCTV-9 记录,CCTV9
+CCTV-9纪录,CCTV9
+CCTV-9记录高清,CCTV9
+cctv10,CCTV10
+CCTV10HD,CCTV10
+cctv-10,CCTV10
+CCTV-10,CCTV10
+CCTV-10HD,CCTV10
+CCTV10高清,CCTV10
+CCTV-10高清,CCTV10
+CCTV10科教,CCTV10
+CCTV-10科教,CCTV10
+CCTV-10科教高清,CCTV10
+CCTV-10 科教,CCTV10
+cctv11,CCTV11
+CCTV11HD,CCTV11
+cctv-11,CCTV11
+CCTV-11,CCTV11
+CCTV-11HD,CCTV11
+CCTV11高清,CCTV11
+CCTV-11高清,CCTV11
+CCTV-11戏曲,CCTV11
+CCTV-11戏曲高清,CCTV11
+CCTV11戏曲,CCTV11
+CCTV-11 戏曲,CCTV11
+cctv12,CCTV12
+CCTV12HD,CCTV12
+cctv-12,CCTV12
+CCTV-12,CCTV12
+CCTV-12HD,CCTV12
+CCTV12高清,CCTV12
+CCTV-12高清,CCTV12
+CCTV-12社会,CCTV12
+CCTV12社会与法,CCTV12
+CCTV-12社会与法,CCTV12
+CCTV-12社会与法高清,CCTV12
+CCTV-12 社会与法,CCTV12
+cctv13,CCTV13
+CCTV13HD,CCTV13
+cctv-13,CCTV13
+CCTV-13,CCTV13
+CCTV-13HD,CCTV13
+CCTV13高清,CCTV13
+CCTV-13高清,CCTV13
+CCTV13新闻,CCTV13
+CCTV-13新闻,CCTV13
+CCTV-13新闻高清,CCTV13
+CCTV-13 新闻,CCTV13
+cctv14,CCTV14
+CCTV14HD,CCTV14
+cctv-14,CCTV14
+CCTV-14,CCTV14
+CCTV-14HD,CCTV14
+CCTV14高清,CCTV14
+CCTV-14高清,CCTV14
+CCTV-少儿,CCTV14
+CCTV14少儿,CCTV14
+CCTV-14少儿,CCTV14
+CCTV-14少儿高清,CCTV14
+CCTV-14 少儿,CCTV14
+CCTV-14少儿高清,CCTV14
+cctv15,CCTV15
+CCTV15HD,CCTV15
+cctv-15,CCTV15
+CCTV-15,CCTV15
+CCTV-15HD,CCTV15
+CCTV15高清,CCTV15
+CCTV-15高清,CCTV15
+CCTV15音乐,CCTV15
+CCTV-15音乐,CCTV15
+CCTV-15音乐高清,CCTV15
+CCTV-15 音乐,CCTV15
+cctv16,CCTV16
+CCTV16HD,CCTV16
+cctv-16,CCTV16
+CCTV-16,CCTV16
+CCTV-16HD,CCTV16
+CCTV16高清,CCTV16
+CCTV-16高清,CCTV16
+CCTV16奥林匹克,CCTV16
+CCTV-16奥林匹克,CCTV16
+CCTV-16 奥林匹克,CCTV16
+cctv17,CCTV17
+CCTV17HD,CCTV17
+cctv-17,CCTV17
+CCTV-17,CCTV17
+CCTV-17HD,CCTV17
+CCTV17高清,CCTV17
+CCTV-17高清,CCTV17
+CCTV-17农业高清,CCTV17
+CCTV17农业农村,CCTV17
+CCTV-17农业农村,CCTV17
+CCTV-17 农业农村,CCTV17
+CCTV-NEWS,CCTVNews
+CGTN English,CGTN
+CGTN 新闻,CGTN
+CGTN新闻,CGTN
+CGTNEN,CGTN
+CGTN英语,CGTN
+CGTN 英语,CGTN
+CGTN-英语,CGTN
+CGTN高清,CGTN
+CGTN西班牙语,CGTN西语
+CGTN 西班牙语,CGTN西语
+CGTN-西班牙语,CGTN西语
+cgtnsp,CGTN西语
+CGTN Espanol,CGTN西语
+cgtnfrench,CGTN法语
+CGTN Francais,CGTN法语
+CGTN 法语,CGTN法语
+CGTN-法语,CGTN法语
+cgtnru,CGTN俄语
+CGTN Russian,CGTN俄语
+CGTN 俄语,CGTN俄语
+CGTN-俄语,CGTN俄语
+CGTN阿拉伯语,CGTN阿语
+CGTN 阿拉伯语,CGTN阿语
+CGTN-阿拉伯语,CGTN阿语
+CGTN Arabic,CGTN阿语
+CGTNALBY,CGTN阿语
+CGTN英文纪录,CGTN纪录
+CGTN外语纪录,CGTN纪录
+CGTN记录,CGTN纪录
+CGTN-纪录,CGTN纪录
+CGTN-纪录频道,CGTN纪录
+cgtndocumentary,CGTN纪录
+CGTNDocumentary,CGTN纪录
+CGTN Documentary,CGTN纪录
+CGTN-Documentary_HD,CGTN纪录
+安徽卫视4k,安徽卫视
+安徽卫视4K,安徽卫视
+安徽卫视高清,安徽卫视
+安徽卫视 高清,安徽卫视
+安徽卫视HD,安徽卫视
+安徽卫视 HD,安徽卫视
+北京卫视4k,北京卫视
+北京卫视4K,北京卫视
+北京卫视HD,北京卫视
+北京卫视 HD,北京卫视
+北京卫视高清,北京卫视
+北京卫视 高清,北京卫视
+重庆卫视4k,重庆卫视
+重庆卫视HD,重庆卫视
+重庆卫视 HD,重庆卫视
+重庆卫视高清,重庆卫视
+重庆卫视 高清,重庆卫视
+东方卫视HD,东方卫视
+东方卫视 HD,东方卫视
+上海卫视,东方卫视
+东方卫视高清,东方卫视
+东方卫视 高清,东方卫视
+上海东方卫视,东方卫视
+上海东方卫视HD,东方卫视
+上海东方财经,东方财经
+甘肃卫视,甘肃卫视
+甘肃卫视HD,甘肃卫视
+甘肃卫视 HD,甘肃卫视
+甘肃卫视高清,甘肃卫视
+甘肃卫视 高清,甘肃卫视
+广东卫视,广东卫视
+广东卫视HD,广东卫视
+广东卫视 HD,广东卫视
+广东卫视高清,广东卫视
+广东卫视 高清,广东卫视
+广西卫视,广西卫视
+广西卫视HD,广西卫视
+广西卫视 HD,广西卫视
+广西卫视高清,广西卫视
+广西卫视 高清,广西卫视
+贵州卫视,贵州卫视
+贵州卫视HD,贵州卫视
+贵州卫视 HD,贵州卫视
+贵州卫视高清,贵州卫视
+贵州卫视 高清,贵州卫视
+海南卫视,海南卫视
+海南卫视HD,海南卫视
+海南卫视 HD,海南卫视
+海南卫视高清,海南卫视
+海南卫视 高清,海南卫视
+河北卫视,河北卫视
+河北卫视HD,河北卫视
+河北卫视 HD,河北卫视
+河北卫视高清,河北卫视
+河北卫视 高清,河北卫视
+河南卫视,河南卫视
+河南卫视HD,河南卫视
+河南卫视 HD,河南卫视
+河南卫视高清,河南卫视
+河南卫视 高清,河南卫视
+黑龙江卫视,黑龙江卫视
+黑龙江卫视HD,黑龙江卫视
+黑龙江卫视 HD,黑龙江卫视
+黑龙江卫视高清,黑龙江卫视
+黑龙江卫视 高清,黑龙江卫视
+湖北卫视,湖北卫视
+湖北卫视HD,湖北卫视
+湖北卫视 HD,湖北卫视
+湖北卫视高清,湖北卫视
+湖北卫视 高清,湖北卫视
+湖南卫视,湖南卫视
+湖南卫视HD,湖南卫视
+湖南卫视 HD,湖南卫视
+湖南卫视高清,湖南卫视
+湖南卫视 高清,湖南卫视
+吉林卫视,吉林卫视
+吉林卫视HD,吉林卫视
+吉林卫视 HD,吉林卫视
+吉林卫视高清,吉林卫视
+吉林卫视 高清,吉林卫视
+江苏卫视,江苏卫视
+江苏卫视HD,江苏卫视
+江苏卫视 HD,江苏卫视
+江苏卫视高清,江苏卫视
+江苏卫视 高清,江苏卫视
+江西卫视,江西卫视
+江西卫视HD,江西卫视
+江西卫视 HD,江西卫视
+江西卫视高清,江西卫视
+江西卫视 高清,江西卫视
+辽宁卫视,辽宁卫视
+辽宁卫视HD,辽宁卫视
+辽宁卫视 HD,辽宁卫视
+辽宁卫视高清,辽宁卫视
+辽宁卫视 高清,辽宁卫视
+内蒙古卫视HD,内蒙古卫视
+内蒙古卫视 HD,内蒙古卫视
+内蒙古卫视高清,内蒙古卫视
+内蒙古卫视 高清,内蒙古卫视
+宁夏卫视,宁夏卫视
+宁夏卫视HD,宁夏卫视
+宁夏卫视 HD,宁夏卫视
+宁夏卫视高清,宁夏卫视
+宁夏卫视 高清,宁夏卫视
+青海卫视,青海卫视
+青海卫视HD,青海卫视
+青海卫视 HD,青海卫视
+青海卫视高清,青海卫视
+青海卫视 高清,青海卫视
+山东卫视,山东卫视
+山东卫视HD,山东卫视
+山东卫视 HD,山东卫视
+山东卫视 高清,山东卫视
+山东卫视高清,山东卫视
+山西卫视,山西卫视
+山西卫视HD,山西卫视
+山西卫视 HD,山西卫视
+山西卫视高清,山西卫视
+山西卫视 高清,山西卫视
+陕西卫视,陕西卫视
+陕西卫视HD,陕西卫视
+陕西卫视 HD,陕西卫视
+陕西卫视高清,陕西卫视
+陕西卫视 高清,陕西卫视
+深圳卫视,深圳卫视
+深圳卫视HD,深圳卫视
+深圳卫视 HD,深圳卫视
+深圳卫视高清,深圳卫视
+深圳卫视 高清,深圳卫视
+四川卫视,四川卫视
+四川卫视HD,四川卫视
+四川卫视 HD,四川卫视
+四川卫视高清,四川卫视
+四川卫视 高清,四川卫视
+天津卫视,天津卫视
+天津卫视,天津卫视
+天津卫视,天津卫视
+天津卫视HD,天津卫视
+天津卫视 HD,天津卫视
+天津卫视高清,天津卫视
+天津卫视 高清,天津卫视
+西藏卫视,西藏卫视
+西藏卫视HD,西藏卫视
+西藏卫视 HD,西藏卫视
+西藏卫视高清,西藏卫视
+西藏卫视 高清,西藏卫视
+新疆卫视,新疆卫视
+新疆卫视HD,新疆卫视
+新疆卫视 HD,新疆卫视
+新疆卫视高清,新疆卫视
+新疆卫视 高清,新疆卫视
+云南卫视,云南卫视
+云南卫视HD,云南卫视
+云南卫视 HD,云南卫视
+云南卫视高清,云南卫视
+云南卫视 高清,云南卫视
+浙江卫视,浙江卫视
+浙江卫视HD,浙江卫视
+浙江卫视 HD,浙江卫视
+浙江卫视高清,浙江卫视
+浙江卫视 高清,浙江卫视
+CETV早期教育,CETV
+中国教育1台,CETV1
+cetv1,CETV1
+cetv1HD,CETV1
+cetv-1,CETV1
+CETV-1HD,CETV1
+CETV-1,CETV1
+中国教育1,CETV1
+中国教育-1,CETV1
+中国教育-1高清,CETV1
+中国教育2,CETV2
+中国教育-2,CETV2
+中国教育2台,CETV2
+cetv2,CETV2
+cetv-2,CETV2
+CETV-2,CETV2
+中国教育3,CETV3
+中国教育3台,CETV3
+中国教育4,CETV4
+中国教育-4,CETV4
+中国教育4台,CETV4
+cetv4,CETV4
+cetv-4,CETV4
+CETV-4,CETV4
+CETV-4高清,CETV4
+SDETV,山东教育卫视
+山东教育,山东教育卫视
+安徽经济生活,安徽经济生活
+安徽综艺·体育,安徽综艺体育
+安徽综艺·体育,安徽综艺体育
+安徽影视,安徽影视
+安徽公共,安徽公共
+安徽农业·科教,安徽农业科教
+安徽农业·科教,安徽农业科教
+安徽国际,安徽国际
+BTV文艺,北京文艺
+BRTV文艺,北京文艺
+北京文艺频道,北京文艺
+BTV科教,北京纪实科教
+BTV冬奥纪实,北京纪实科教
+北京纪实,北京纪实科教
+北京纪实HD,北京纪实科教
+北京纪实 HD,北京纪实科教
+北京纪实高清,北京纪实科教
+BRTV纪实科教,北京纪实科教
+BTV影视,北京影视
+BRTV影视,北京影视
+北京影视频道,北京影视
+BTV生活,北京生活
+BRTVi生活,北京生活
+北京生活频道,北京生活
+BTV体育,北京体育休闲
+北京体育休闲,北京体育休闲
+BTV财经,北京财经
+BRTV财经,北京财经
+北京财经频道,北京财经
+BTV新闻,北京新闻
+BRTV新闻,北京新闻
+北京新闻频道,北京新闻
+BRTV国际频道,北京国际频道
+北京国际频道,北京国际频道
+北京卡酷,北京kaku少儿
+卡酷少儿,北京kaku少儿
+北京卡酷少儿,北京kaku少儿
+CQTV娱乐,重庆文体娱乐
+重庆文体娱乐,重庆文体娱乐
+CQTV科教,重庆科教
+重庆科教,重庆科教
+重庆社会与法,重庆社会与法
+重庆少儿频道,重庆少儿
+CQTV少儿,重庆少儿
+重庆时尚生活,重庆时尚生活
+CQTV汽摩,重庆汽摩
+重庆汽摩频道,重庆汽摩
+重庆影视剧频道,重庆影视
+CQTV影视,重庆影视
+重庆新闻频道,重庆新闻
+CQTV新闻,重庆新闻
+东方影视
+东方财经
+东方购物
+五星体育
+哈哈炫动
+新闻综合,上海新闻综合
+东方新闻综合,上海新闻综合
+东方都市
+福建综合频道,福建综合
+东南卫视
+东南卫视HD,东南卫视
+东南卫视 HD,东南卫视
+东南卫视高清,东南卫视
+福建东南卫视高清,东南卫视
+厦门卫视高清,厦门卫视
+厦门卫视 高清,厦门卫视
+福建文旅体育
+福建少儿频道,福建少儿
+福建教育频道,福建教育
+海峡卫视
+福建新闻频道,福建新闻
+
+甘肃科教高清,甘肃科教
+甘肃少儿高清,甘肃少儿
+甘肃文化影视高清,甘肃文化影视
+甘肃公共高清,甘肃公共应急
+TVS1,广东经济科教
+TVS2,南方卫视
+广东南方卫视,南方卫视
+广东新闻高清,广东新闻
+广东民生频道,广东民生
+广东民生高清,广东民生
+TVS4,广东影视
+广东影视高清,广东影视
+广东体育高清,广东体育
+TVS5,广东少儿
+广东少儿高清,广东少儿
+广东少儿频道,广东少儿
+广东嘉佳卡通,嘉佳卡通
+大湾区卫视高清,大湾区卫视
+南方卫视,大湾区卫视
+广东大湾区卫视,大湾区卫视
+三沙卫视高清,三沙卫视
+三沙卫视 高清,三沙卫视
+黑龙江都市频道,黑龙江都市
+黑龙江农业科教,黑龙江农业·科教
+黑龙江农业,黑龙江农业·科教
+黑龙江少儿频道,黑龙江少儿
+黑龙江少儿高清,黑龙江少儿
+黑龙江文体频道,黑龙江文体
+黑龙江影视频道,黑龙江影视
+黑龙江影视高清,黑龙江影视
+黑龙江新闻高清,黑龙江新闻
+湖南金鹰卡通,金鹰卡通
+湖南金鹰卡通卫视,金鹰卡通
+湖南娱乐
+湖南电视剧
+湖南爱晚
+湖南电影
+湖南国际
+湖南新闻
+吉林综艺,吉林综艺·文化
+辽宁都市频道,辽宁都市
+辽宁影视剧频道,辽宁影视剧
+辽宁宜佳购物,辽宁宜佳
+辽宁教育青少,辽宁青少
+辽宁生活频道,辽宁生活
+辽宁公共高清,辽宁公共
+辽宁公共频道,辽宁公共
+辽宁北方频道,辽宁北方
+辽宁体育休闲,辽宁体育
+辽宁经济频道,辽宁经济
+辽宁经济高清,辽宁经济
+辽宁新闻
+内蒙古新闻综合高清,内蒙古新闻综合
+内蒙古经济生活HD,内蒙古经济生活
+内蒙古经济生活高清,内蒙古经济生活
+内蒙古文化高清,内蒙古文体娱乐
+内蒙古文化娱乐,内蒙古文体娱乐
+内蒙古文体娱乐高清,内蒙古文体娱乐
+内蒙古农牧频道,内蒙古农牧
+内蒙古农牧频道HD,内蒙古农牧
+内蒙古农牧频道高清,内蒙古农牧
+内蒙古少儿频道,内蒙古少儿
+内蒙古少儿高清,内蒙古少儿
+内蒙古蒙语卫视HD,内蒙古蒙语卫视
+内蒙古蒙古语卫视高清,内蒙古蒙语卫视
+内蒙古蒙语文化高清,蒙古语文化
+内蒙古宣传
+内蒙古新闻
+陕西新闻资讯
+陕西都市青春
+陕西银龄
+陕西四套
+陕西秦腔
+乐家购物
+陕西体育休闲
+农林卫视
+陕西西部电影,西部电影
+陕西新闻
+SCTV-2,四川经济
+SCTV-3,四川文化旅游
+SCTV-4,四川新闻
+四川影视,四川影视文艺
+SCTV-5,四川影视文艺
+SCTV-6,四川星空购物
+SCTV-科教,四川科教
+四川妇女,四川妇儿
+SCTV-7,四川妇儿
+SCTV-8,四川科教
+SCTV-9,四川乡村
+四川乡村,四川乡村
+SCTV-10,峨眉电影
+SCTV-11,康巴卫视
+SCTV-12,星空移动
+SCTV-13,星空城市
+东方财经,东方财经
+五星体育频道,五星体育
+哈哈炫动频道,哈哈炫动
+兵团卫视高清,兵团卫视
+云南都市高清,云南都市
+云南娱乐高清,云南娱乐
+云南生活高清,云南生活
+云南影视高清,云南影视
+云南影视高清,云南影视
+云南少儿高清,云南少儿
+云南新闻高清,云南新闻
+合信佳,HXJ
