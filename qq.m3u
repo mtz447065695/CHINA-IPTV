@@ -155,6 +155,8 @@ https://live-hls-apps-ajm-fa.getaj.net/AJM/index.m3u8
 https://live-hls-apps-ajm24-fa.getaj.net/AJM24/index.m3u8
 #EXTINF:-1 group-title="全球新闻网",Al Jazeera Mubasher Broadcast 2 (1080p) 🌐
 https://live-hls-apps-ajm2-fa.getaj.net/AJM2/index.m3u8
+#EXTINF:-1 group-title="全球新闻网",Al Manar (576p) [Not 24/7] 🌐
+https://edge.fastpublish.me/live/index.m3u8
 #EXTINF:-1 group-title="全球新闻网",Al Masar TV (576p) 🌐
 https://starmenajo.com/hls/almasar/index.m3u8
 #EXTINF:-1 group-title="全球新闻网",Al Masirah (720p) [Not 24/7] 🌐
@@ -195,50 +197,6 @@ https://5e50264bd6766.streamlock.net/mexiquense2/videomexiquense2/playlist.m3u8
 https://account19.livebox.co.in/Anandabarta2hls/live.m3u8
 #EXTINF:-1 group-title="全球新闻网",ANB News (720p) 🌐
 https://server.livelegitpro.in:9899/anbnews/anbnews/index.m3u8
-#EXTINF:-1 group-title="全球新闻网",Anshun Comprehensive News Channel 🌐
-https://hplayer1.juyun.tv/camera/154379194.m3u8
-#EXTINF:-1 group-title="全球新闻网",Antik Info TV (1080p) 🌐
-https://dash4.antik.sk/live/test_infokanal_tizen/playlist.m3u8
-#EXTINF:-1 group-title="全球新闻网",APA Tv (1080p) 🌐
-http://stream.apa.tv/apastream/index.m3u8
-#EXTINF:-1 group-title="全球新闻网",Aratu On 🌐
-https://cdn.live.br1.jmvstream.com/w/LVW-9359/LVW9359_XSyReL0QVf/playlist.m3u8
-#EXTINF:-1 group-title="全球新闻网",ARB 24 🌐
-https://raw.githubusercontent.com/UzunMuhalefet/streams/main/myvideo-az/arb-24.m3u8
-#EXTINF:-1 group-title="全球新闻网",Arirang TV (1080p) 🌐
-http://amdlive-ch01.ctnd.com.edgesuite.net/arirang_1ch/smil:arirang_1ch.smil/playlist.m3u8
-#EXTINF:-1 group-title="全球新闻网",Arirang TV HD 🌐
-https://dash3.antik.sk/live/test_arirang/playlist.m3u8
-#EXTINF:-1 group-title="全球新闻网",Arirang TV UN (1080p) 🌐
-https://amdlive-ch02-ctnd-com.akamaized.net/arirang_2ch/smil:arirang_2ch.smil/playlist.m3u8
-#EXTINF:-1 group-title="全球新闻网",Army TV (1080p) 🌐
-https://api-tv.ipnet.ua/api/v1/manifest/2118742632.m3u8
-#EXTINF:-1 group-title="全球新闻网",Asharq News (1080p) 🌐
-https://live-news.asharq.com/asharq.m3u8
-#EXTINF:-1 group-title="全球新闻网",Asharq Radio (1080p) 🌐
-https://svs.itworkscdn.net/asharqradiovlive/asharqradiov/playlist.m3u8
-#EXTINF:-1 group-title="全球新闻网",Asianet News (1080p) 🌐
-https://amg13737-amg13737c1-amgplt0016.playout.now3.amagi.tv/playlist/amg13737-amg13737c1-amgplt0016/playlist.m3u8
-#EXTINF:-1 group-title="全球新闻网",Asianet Suvarna News (1080p) [Not 24/7] 🌐
-https://asianetnews.vgcdn.net/vglive-sk-335835/playlist.m3u8
-#EXTINF:-1 group-title="全球新闻网",Astra TV (1080p) 🌐
-https://server.gointernet.gr/live/livestream.m3u8
-#EXTINF:-1 group-title="全球新闻网",ASTV News 1 (720p) [Not 24/7] 🌐
-http://news1.live14.com/stream/news1.m3u8
-#EXTINF:-1 group-title="全球新闻网",ATN News (1080p) 🌐
-https://bozztv.com/rongo/rongo-ATNNews/index.m3u8
-#EXTINF:-1 group-title="全球新闻网",ATV+ (1080p) 🌐
-http://179.60.51.134:8888/ATV/index.m3u8
-#EXTINF:-1 group-title="全球新闻网",Awaaz India TV (720p) [Not 24/7] 🌐
-https://awaazindia.livebox.co.in/AwaazIndaTVhls/Live.m3u8
-#EXTINF:-1 group-title="全球新闻网",Baku TV (720p) 🌐
-https://raw.githubusercontent.com/UzunMuhalefet/streams/refs/heads/main/myvideo-az/baku-tv.m3u8
-#EXTINF:-1 group-title="全球新闻网",Baraka Television (720p) [Not 24/7] 🌐
-https://stream.berosat.live:19360/baraka-hd/baraka-hd.m3u8
-#EXTINF:-1 group-title="全球新闻网",BBC Arabic (720p) 🌐
-https://vs-cmaf-pushb-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_arabic_tv/pc_hd_abr_v2.mpd
-#EXTINF:-1 group-title="全球新闻网",BBC News (1080p) [Geo-blocked] 🌐
-https://pb-iiczlgfysam0q.akamaized.net/v1/amcnetworks_bbcnews_1/samsungheadend_us/latest/main/hls/playlist.m3u8
 #EXTINF:-1 group-title="全球纪录片",30A Loomered TV 🌐
 https://30a-tv.com/loomer.m3u8
 #EXTINF:-1 group-title="全球纪录片",365 Дней (576p) 🌐
@@ -331,8 +289,6 @@ https://d1nhni5l2n8hjt.cloudfront.net/gf.m3u8
 https://gzttv-live.lg.mncdn.com/gzttv/gzttv/playlist.m3u8
 #EXTINF:-1 group-title="全球纪录片",Heroes & Icons (720p) 🌐
 http://206.212.244.63/88/index.m3u8
-#EXTINF:-1 group-title="全球纪录片",Historia y Vida (720p) 🌐
-https://jmp2.uk/plu-67517f923a61d40008c451f0.m3u8
 #EXTINF:-1 group-title="全球纪录片",History (720p) 🌐
 http://206.212.244.63/91/index.m3u8
 #EXTINF:-1 group-title="全球纪录片",History 2 Latin America (1080p) 🌐
@@ -365,6 +321,8 @@ https://amg01821-lovetvchannels-lovetheplanetuksamsung-samsunguk-apopw.amagi.tv/
 https://d3j95sejv6mybj.cloudfront.net/Lucky_Dog.m3u8
 #EXTINF:-1 group-title="全球纪录片",MagellanTV Now (1080p) 🌐
 https://amg00376-magellan-amg00376c5-samsung-au-1708.playouts.now.amagi.tv/playlist/amg00376-magellantv-magellantvnowww-samsungau/playlist.m3u8
+#EXTINF:-1 group-title="全球纪录片",MRTV Farmer 🌐
+https://mrtvott.com/cache/MRTV-FARMER/master.m3u8
 #EXTINF:-1 group-title="全球纪录片",N24 Doku 🌐
 https://jmp2.uk/plu-60080e8a4bf36000076a81b1.m3u8
 #EXTINF:-1 group-title="全球纪录片",National Geographic (720p) 🌐
@@ -431,64 +389,6 @@ https://jmp2.uk/plu-608aa8a5709d6b0007b132fe.m3u8
 https://jmp2.uk/plu-62b30b0060a9ca0007d628b4.m3u8
 #EXTINF:-1 group-title="全球纪录片",Pluto TV Dokumentär 🌐
 https://jmp2.uk/plu-62b1e2498261390007f25c98.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Explore 🌐
-https://jmp2.uk/plu-5ad9b8551b95267e225e59c1.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Food 🌐
-https://jmp2.uk/plu-5dc280c9aa218c0009724b4b.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Histoire (720p) 🌐
-https://jmp2.uk/plu-611e771e2f5f180007002224.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Historia (720p) 🌐
-https://jmp2.uk/plu-61cd7b49543066000713b620.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV History 🌐
-https://jmp2.uk/plu-5d767b1c126c65d0a307355f.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV History 🌐
-https://jmp2.uk/plu-5d4af1803e7983b391d73b13.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV History 🌐
-https://jmp2.uk/plu-5a4d35dfa5c02e717a234f86.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Investigação 🌐
-https://jmp2.uk/plu-5f32cf37c9ff2b00082adbc8.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Mi Obsesión Favorita 🌐
-https://jmp2.uk/plu-6109ab25b84d6a0007504886.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Mystery 🌐
-https://jmp2.uk/plu-617aad99b68ef100072608cd.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Natura 🌐
-https://jmp2.uk/plu-60802b37709d6b0007b0c549.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Naturaleza 🌐
-https://jmp2.uk/plu-5dd85eac039bba0009e86d1d.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Nature 🌐
-https://jmp2.uk/plu-5be1c3f9851dd5632e2c91b2.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Negócio Fechado 🌐
-https://jmp2.uk/plu-64ad7394798def00087b2bfe.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Paranormal 🌐
-https://jmp2.uk/plu-62e92a58f3e4290007290c96.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Paranormal 🌐
-https://jmp2.uk/plu-5adf96e3e738977e2c31cb04.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV PetrolHeads 🌐
-https://jmp2.uk/plu-65a7b0814a10d800085ff2df.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Policial 🌐
-https://jmp2.uk/plu-678fdf9e3de7c8cf948e8824.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Reportagen 🌐
-https://jmp2.uk/plu-68ada3edf84960586ad31c7d.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Science 🌐
-https://jmp2.uk/plu-5d767b4889bca2ce7b73ef2e.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Science 🌐
-https://jmp2.uk/plu-5d9492c77ea6f99188738ff1.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Science 🌐
-https://jmp2.uk/plu-563a970aa1a1f7fe7c9daad7.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Space 🌐
-https://jmp2.uk/plu-61409f8d6feb30000766b675.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Space 🌐
-https://jmp2.uk/plu-5dbc2f98777f2e0009934ae7.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Space 🌐
-https://jmp2.uk/plu-61b86c6ef30f5d0007e4c6d1.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Storia 🌐
-https://jmp2.uk/plu-65253fdf3fd33c00080214a3.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV Tough Jobs 🌐
-https://jmp2.uk/plu-600acaff5f2d6e000745effb.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV True Crime 🌐
-https://jmp2.uk/plu-615333098185f00008715a56.m3u8
-#EXTINF:-1 group-title="全球纪录片",Pluto TV True Crime 🌐
-https://jmp2.uk/plu-64a3f200f238ce0008d47247.m3u8
 #EXTINF:-1 group-title="全球体育台",30A Golf Kingdom (720p) 🌐
 https://30a-tv.com/feeds/vidaa/golf.m3u8
 #EXTINF:-1 group-title="全球体育台",A Spor (1080p) 🌐
@@ -575,6 +475,10 @@ https://stmv2.voxtvhd.com.br/crtvchile/crtvchile/playlist.m3u8
 http://88.212.15.19/live/test_ctsport_25p/playlist.m3u8
 #EXTINF:-1 group-title="全球体育台",DAZN Combat (684p) 🌐
 https://jmp2.uk/plu-64d626ac9b414d000820e2fc.m3u8
+#EXTINF:-1 group-title="全球体育台",DAZN Darts x Pluto TV 🌐
+https://jmp2.uk/plu-64b67f0424ade50008a3be17.m3u8
+#EXTINF:-1 group-title="全球体育台",DAZN Heldinnen x Pluto TV 🌐
+https://jmp2.uk/plu-64afe50c5dc16600087f3227.m3u8
 #EXTINF:-1 group-title="全球体育台",DD Sports SD (1080p) 🌐
 https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/b17adfe543354fdd8d189b110617cddd/index.m3u8
 #EXTINF:-1 group-title="全球体育台",Deportes TVC (1080p) 🌐
@@ -625,8 +529,6 @@ https://d63fabad.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdX
 https://d2w9q46ikgrcwx.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-of5cbk3sav3w5/v1/sysdata_s_p_a_fifa_7/samsungheadend_us/latest/main/hls/playlist.m3u8
 #EXTINF:-1 group-title="全球体育台",FIFA+ Women (720p) 🌐
 https://cffda8ff.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/U2Ftc3VuZy1nYl9GSUZBUGx1c3dvbWVuX0hMUw/playlist.m3u8
-#EXTINF:-1 group-title="全球体育台",FightBox Poland (1080p) 🌐
-http://91.146.94.234:10001/play/a085
 #EXTINF:-1 group-title="全球体育台",FITE 24/7 (1080p) 🌐
 https://d3d85c7qkywguj.cloudfront.net/scheduler/scheduleMaster/263.m3u8
 #EXTINF:-1 group-title="全球体育台",FloHockey 24/7 (1080p) 🌐
@@ -665,46 +567,6 @@ http://91.146.94.234:10001/play/a04b
 https://a-cdn.klowdtv.com/live2/horsetv_720p/playlist.m3u8
 #EXTINF:-1 group-title="全球体育台",HTSpor TV (1080p) 🌐
 https://ciner.daioncdn.net/ht-spor/ht-spor.m3u8?app=web
-#EXTINF:-1 group-title="全球体育台",INTROUBLE (1080p) 🌐
-https://amg00861-amg00861c6-stirr-us-8229.playouts.now.amagi.tv/playlist.m3u8
-#EXTINF:-1 group-title="全球体育台",IRIB3 🌐
-https://ncdn.telewebion.ir/tv3/live/playlist.m3u8
-#EXTINF:-1 group-title="全球体育台",ITV Deportes (720p) 🌐
-https://thm-it-roku.otteravision.com/thm/it/it.m3u8
-#EXTINF:-1 group-title="全球体育台",Jordan Sport (1080p) 🌐
-http://93.184.10.248/JordanSport/index.m3u8
-#EXTINF:-1 group-title="全球体育台",KCMN-LD6 (1080p) 🌐
-https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg02873-kravemedia-mtrspt1-distrotv/playlist.m3u8
-#EXTINF:-1 group-title="全球体育台",KHL (720p) 🌐
-http://31.148.48.15/KHL_TV/index.m3u8
-#EXTINF:-1 group-title="全球体育台",KHL Prime (720p) 🌐
-http://31.148.48.15/KHL_TV_HD/index.m3u8
-#EXTINF:-1 group-title="全球体育台",KSA Sports 1 (1080p) 🌐
-https://aloula-redirect.vercel.app/9/playlist.m3u8
-#EXTINF:-1 group-title="全球体育台",KSA Sports 2 (1080p) 🌐
-https://aloula-redirect.vercel.app/10/playlist.m3u8
-#EXTINF:-1 group-title="全球体育台",KSA Sports 3 (1080p) 🌐
-https://aloula-redirect.vercel.app/16/playlist.m3u8
-#EXTINF:-1 group-title="全球体育台",KTV Sport (1080p) 🌐
-https://kwtspta.cdn.mangomolo.com/sp/smil:sp.stream.smil/chunklist.m3u8
-#EXTINF:-1 group-title="全球体育台",KTV Sport Plus (1080p) 🌐
-https://kwtsplta.cdn.mangomolo.com/spl/smil:spl.stream.smil/chunklist.m3u8
-#EXTINF:-1 group-title="全球体育台",LaLiga TV 🌐
-http://162.19.255.233:8080/play/UNbAl57p9hXZClOu56FCTZID4SFOqZLZ81NguVP-JxM/m3u8
-#EXTINF:-1 group-title="全球体育台",M-Net Sport (720p) 🌐
-http://ares.mnet.mk/hls/mnet-sport.m3u8
-#EXTINF:-1 group-title="全球体育台",MadeinBO TV (1080p) 🌐
-https://srvx1.selftv.video/dmchannel/live/playlist.m3u8
-#EXTINF:-1 group-title="全球体育台",Match! Strana (720p) 🌐
-http://31.148.48.15/Match_Strana/index.m3u8
-#EXTINF:-1 group-title="全球体育台",Meridiano TV (576p) 🌐
-http://181.78.8.199:8000/play/a0fr/index.m3u8
-#EXTINF:-1 group-title="全球体育台",MLB Channel (1080p) [Geo-blocked] 🌐
-https://pb-2y9ox4r1fy550.akamaized.net/playlist.m3u8
-#EXTINF:-1 group-title="全球体育台",MLB Strike Zone (720p) 🌐
-http://23.237.104.106:8080/USA_MLB_STRIKE_ZONE/index.m3u8
-#EXTINF:-1 group-title="全球体育台",MMA TV.com (1080p) 🌐
-https://streams2.sofast.tv/vglive-sk-462904/playlist.m3u8
 #EXTINF:-1 group-title="全球电影台",00s Replay 🌐
 https://jmp2.uk/plu-62ba60f059624e000781c436.m3u8
 #EXTINF:-1 group-title="全球电影台",30A TV Classic Movies (720p) 🌐
@@ -785,6 +647,8 @@ https://fl.biztv.media/cinema_720_EMfSyXgoRdiIHgldXTZICucKTIeCKO/index.m3u8
 https://xykt-fix.github.io/cinerama_edge01/hls/BOLLYWOOD_RU/Movie009.m3u8
 #EXTINF:-1 group-title="全球电影台",Bolt (576p) 🌐
 http://hls127.freeott.top:8080/Bolt/video.m3u8
+#EXTINF:-1 group-title="全球电影台",Bonanza 🌐
+https://jmp2.uk/plu-696e647b07ea70192d49f6a5.m3u8
 #EXTINF:-1 group-title="全球电影台",Bonanza 🌐
 https://jmp2.uk/plu-68e9913c4a666b9054849832.m3u8
 #EXTINF:-1 group-title="全球电影台",Boreal (720p) [Not 24/7] 🌐
@@ -871,33 +735,3 @@ https://aegis-cloudfront-1.tubi.video/a0ad4b53-ab3a-48dd-be12-bc7f533c372c/playl
 https://rpn.bozztv.com/ebstv/ebscinema/index.m3u8
 #EXTINF:-1 group-title="全球电影台",Estrellas de Acción 🌐
 https://jmp2.uk/plu-5e972a21ad709d00074195ba.m3u8
-#EXTINF:-1 group-title="全球电影台",ETV Cinema HD (1080p) 🌐
-https://d27zlkxhgwrfgo.cloudfront.net/v1/master/9d43eacaed199f8d5883927e7aef514a8a08e108/ETV_CINEMA_H264_cloud_in/index.m3u8
-#EXTINF:-1 group-title="全球电影台",FAN (1080p) 🌐
-http://31.148.48.15/Fan/index.m3u8
-#EXTINF:-1 group-title="全球电影台",Filmax (576p) 🌐
-https://s3.ideationtec.live/Filmax/Filmax.m3u8
-#EXTINF:-1 group-title="全球电影台",FilmBox Arthouse 🌐
-https://dash3.antik.sk/live/test_filmbox_arthouse_atk_1200/playlist.m3u8
-#EXTINF:-1 group-title="全球电影台",Filmes Suspense 🌐
-https://jmp2.uk/plu-5f171d3442a0500007362f22.m3u8
-#EXTINF:-1 group-title="全球电影台",Filmex (Xumo) (1080p) [Geo-blocked] 🌐
-https://filmex-filmex-xumo.amagi.tv/playlist.m3u8
-#EXTINF:-1 group-title="全球电影台",Filmex Clásico (1080p) [Geo-blocked] 🌐
-https://filmex-filmexclasico-xumo.amagi.tv/playlist.m3u8
-#EXTINF:-1 group-title="全球电影台",FilmRise Westerns (720p) 🌐
-https://dz05z8iljgvbe.cloudfront.net/master.m3u8
-#EXTINF:-1 group-title="全球电影台",FilmUA Live 🌐
-https://dash2.antik.sk/live/test_film_life_atktv/playlist.m3u8
-#EXTINF:-1 group-title="全球电影台",Flicks of Fury 🌐
-https://jmp2.uk/plu-58e55b14ad8e9c364d55f717.m3u8
-#EXTINF:-1 group-title="全球电影台",Forensic Files (720p) [Geo-blocked] 🌐
-https://pb-x9qsxrudiq9d2.akamaized.net/webvtt/v1/18584c3f3a2a4df8/88886014/master.m3u8
-#EXTINF:-1 group-title="全球电影台",GEM Pixel 🌐
-https://glserver1.tamashaland.com/live/aBCH96886YznRbGOiqTnnQ__/stream_0.m3u8
-#EXTINF:-1 group-title="全球电影台",Girlfriends 🌐
-https://jmp2.uk/plu-66ba1e4446762a000855cd87.m3u8
-#EXTINF:-1 group-title="全球电影台",Gold Star 🌐
-https://moviethls.wns.live/hls/stream.m3u8
-#EXTINF:-1 group-title="全球电影台",Goldmines 2 (576p) 🌐
-https://cdn-2.pishow.tv/live/1460/master.m3u8
