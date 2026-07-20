@@ -5,6 +5,8 @@ https://2gblive.akamaized.net/hls/live/2033805/2GB/index.m3u8
 https://3awlive.akamaized.net/hls/live/2032295/3AW/index.m3u8
 #EXTINF:-1 tvg-id="3CatInfo.es@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/3CatInfo_logo.svg/960px-3CatInfo_logo.svg.png" group-title="全球新闻网",3CatInfo (1080p) 🌐
 https://directes-tv-int.3catdirectes.cat/live-origin/canal324-hls/master.m3u8
+#EXTINF:-1 tvg-id="4DmasNoticiasTV.py@SD" tvg-logo="https://i.ibb.co/1fb5BtN/unnamed.png" group-title="全球新闻网",4DmásNoticias TV (1080p) [Not 24/7] 🌐
+https://rds3.desdeparaguay.net/4dmasnoticiastv/4dmasnoticiastv/playlist.m3u8
 #EXTINF:-1 tvg-id="4TVNews.in@SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/4_TV.png" group-title="全球新闻网",4TV News (576p) 🌐
 https://cdn-4.pishow.tv/live/1007/master.m3u8
 #EXTINF:-1 tvg-id="6PR.au@SD" tvg-logo="https://i.imgur.com/Q9iCxg1.png" group-title="全球新闻网",6PR Perth (1080p) 🌐
@@ -15,8 +17,6 @@ https://cdn-1.pishow.tv/live/232/master.m3u8
 https://video1.getstreamhosting.com:1936/8042/8042/playlist.m3u8
 #EXTINF:-1 tvg-id="10TV.in@SD" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_10TV/images/LOGO_HD/image.png" group-title="全球新闻网",10 TV (720p) 🌐
 https://mumbai-edge.smartplaytv.in/10TV/index.m3u8
-#EXTINF:-1 tvg-id="13SiamThai.th@SD" tvg-logo="https://i.imgur.com/FvEp1S2.png" group-title="全球新闻网",13 Siam Thai (1080p) 🌐
-https://live.x2.co.th/live/13livetv-th.m3u8
 #EXTINF:-1 tvg-id="22ScopeNews.in@SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/22Scope_News.png" group-title="全球新闻网",22Scope News (1080p) 🌐
 https://thelegitpro.in/HDlive/22scope/index.fmp4.m3u8
 #EXTINF:-1 tvg-id="247CanaldeNoticias.ar@SD" tvg-logo="https://i.imgur.com/4hDCB1M.png" group-title="全球新闻网",24/7 Canal de Noticias 🌐
@@ -125,6 +125,8 @@ https://c3c275b999764df8a2dd55ffe2996818.mediatailor.eu-west-1.amazonaws.com/v1/
 https://cdn-euronews.akamaized.net/live/eds/africanews-en/25049/index.m3u8
 #EXTINF:-1 tvg-id="AfricanewsFrench.fr@SD" tvg-logo="https://i.imgur.com/5UxU4zc.png" group-title="全球新闻网",Africanews French (720p) 🌐
 https://cdn-euronews.akamaized.net/live/eds/africanews-fr/25050/index.m3u8
+#EXTINF:-1 tvg-id="AfrikInfoTV.gn@SD" tvg-logo="https://i.imgur.com/hz2LOD8.jpeg" group-title="全球新闻网",Afrik Info TV 🌐
+https://kali.vdopanel.com:3119/hybrid/play.m3u8
 #EXTINF:-1 tvg-id="AgroMais.br@SD" tvg-logo="https://i.imgur.com/sFcOZeo.png" group-title="全球新闻网",AgroMais (720p) 🌐
 http://45.162.64.114/AGROMAIS/index.m3u8
 #EXTINF:-1 tvg-id="AKDCalcuttaNews.in@SD" tvg-logo="https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Calcutta%20News.png" group-title="全球新闻网",AKD Calcutta News (1080p) 🌐
@@ -149,8 +151,6 @@ https://aloula-redirect.vercel.app/4/playlist.m3u8
 https://eazyvwqssi.erbvr.com/alghadtv/alghadtv.m3u8
 #EXTINF:-1 tvg-id="AlHadath.sa@SD" tvg-logo="https://i.imgur.com/De4SEWE.png" group-title="全球新闻网",Al Hadath (1080p) 🌐
 https://shd-gcp-live.edgenextcdn.net/live/bitmovin-hadath/2ff87ec4c2f3ede35295a20637d9f8fd/index.m3u8
-#EXTINF:-1 tvg-id="AlIraqiaNews.iq@SD" tvg-logo="https://i.imgur.com/feQTXeZ.jpg" group-title="全球新闻网",Al Iraqia News (720p) 🌐
-https://imn-live.esite-lab.com/hls/iraqia-news.m3u8
 #EXTINF:-1 tvg-id="30ALoomeredTV.us@SD" tvg-logo="https://cbs12.com/resources/media/0c1ecad8-fb09-4bb2-beaa-fc561dfe624a-small21x9_LoomerStill.jpg?1603419052801" group-title="全球纪录片",30A Loomered TV 🌐
 https://30a-tv.com/loomer.m3u8
 #EXTINF:-1 tvg-id="365daysTV.ru@SD" tvg-logo="https://i.imgur.com/NfnAiTR.png" group-title="全球纪录片",365 Дней (576p) 🌐
@@ -299,12 +299,16 @@ https://amg00376-magellan-amg00376c5-samsung-au-1708.playouts.now.amagi.tv/playl
 https://mrtvott.com/cache/MRTV-FARMER/master.m3u8
 #EXTINF:-1 tvg-id="N24Doku.de@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/N24Doku.svg/960px-N24Doku.svg.png" group-title="全球纪录片",N24 Doku 🌐
 https://jmp2.uk/plu-60080e8a4bf36000076a81b1.m3u8
+#EXTINF:-1 tvg-id="Nano.ru@SD" tvg-logo="https://i.imgur.com/dYj3XDa.png" group-title="全球纪录片",Nano (576p) 🌐
+http://stream.mcquack.net/419/index.m3u8
 #EXTINF:-1 tvg-id="NationalGeographic.bg@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="全球纪录片",🇺🇸 National Geographic 🌐
 http://213.91.179.28:8000/play/a0ct
 #EXTINF:-1 tvg-id="NationalGeographic.gr@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="全球纪录片",National Geographic (720p) 🌐
 http://185.102.171.218/NatGeo/index.m3u8
 #EXTINF:-1 tvg-id="NationalGeographic.mx@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="全球纪录片",National Geographic (1080p) 🌐
 http://138.121.15.230:9002/NAT-GEO/index.m3u8
+#EXTINF:-1 tvg-id="NationalGeographic.ru@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="全球纪录片",National Geographic (576p) 🌐
+http://stream.mcquack.net/116/index.m3u8
 #EXTINF:-1 tvg-id="5Sport.il@SD" tvg-logo="https://i.imgur.com/dRVsB89.png" group-title="全球体育台",5Sport (1080p) 🌐
 http://stream.mcquack.net/41/index.m3u8
 #EXTINF:-1 tvg-id="30AGolfKingdom.us@SD" tvg-logo="https://i.imgur.com/Lv53nh4.png" group-title="全球体育台",30A Golf Kingdom (720p) 🌐
@@ -357,8 +361,6 @@ https://stream-lb.livemediama.com/arryadia-tnt/hls/master.m3u8
 https://streamtv.as3sport.online:3394/hybrid/play.m3u8
 #EXTINF:-1 tvg-id="ATGLive.se@SD" tvg-logo="https://i.imgur.com/bPWFXkL.png" group-title="全球体育台",ATG Live (720p) 🌐
 https://kanal75xto-llhls.akamaized.net/live/Data/atg-kanal-15-02a-rr/HLS-Legacy-HL/atg-kanal-15-02a-rr.m3u8
-#EXTINF:-1 tvg-id="AztecaDeportesNetwork.mx@SD" tvg-logo="https://match-images.icdb.tv/5913207f2494844101287828e87625eb.jpg" group-title="全球体育台",Azteca Deportes Network (720p) 🌐
-http://38.194.226.190:8000/play/a02r/index.m3u8
 #EXTINF:-1 tvg-id="BahrainSports1.bh@SD" tvg-logo="https://i.imgur.com/fBpLsbC.png" group-title="全球体育台",Bahrain Sports 1 (720p) [Not 24/7] 🌐
 https://5c7b683162943.streamlock.net/live/ngrp:sportsone_all/playlist.m3u8
 #EXTINF:-1 tvg-id="BahrainSports2.bh@SD" tvg-logo="https://i.imgur.com/ZkuZmIo.png" group-title="全球体育台",Bahrain Sports 2 (720p) [Not 24/7] 🌐
@@ -437,6 +439,8 @@ https://mumt03.tangotv.in/Dsly5z3HALLTIMEMOVIES/index.m3u8
 https://d1yl6bf4hrzbr0.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-5km3zs4zs9sp0/allo.m3u8
 #EXTINF:-1 tvg-id="alphaCinema.ru@HD" tvg-logo="https://i.imgur.com/146OgfU.png" group-title="全球电影台",alpha Cinema (1080p) 🌐
 https://live.15plusmg.ru/memfs/b389173a-df4e-4171-8904-e249893e71eb.m3u8
+#EXTINF:-1 tvg-id="alphaMoretime.ru@HD" tvg-logo="https://i.imgur.com/ibQfUr7.png" group-title="全球电影台",alpha Moretime (1080p) 🌐
+https://live.15plusmg.ru/memfs/3546fc09-2eba-459d-9a1f-9a2fc39e50bd.m3u8
 #EXTINF:-1 tvg-id="AlternaTV.ar@SD" tvg-logo="https://tv.alterna.ar/alternatv.png" group-title="全球电影台",Alterna TV (720p) [Not 24/7] 🌐
 https://tv.alterna.ar/stream/hls/live.m3u8
 #EXTINF:-1 tvg-id="AMC.us@EastHD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/AMC_logo_2019.svg/960px-AMC_logo_2019.svg.png" group-title="全球电影台",AMC (720p) 🌐
@@ -451,6 +455,8 @@ http://88.212.15.19/live/test_amc_25p/playlist.m3u8
 http://45.162.193.35/AMC/index.m3u8
 #EXTINF:-1 tvg-id="AMCLatinAmerica.us@Brazil" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/AMC_logo_2019.svg/960px-AMC_logo_2019.svg.png" group-title="全球电影台",AMC Latin America Brazil (1080p) 🌐
 http://45.190.156.152/AMC/index.m3u8
+#EXTINF:-1 tvg-id="AmediaHit.ru@SD" tvg-logo="https://i.imgur.com/a8ZBGBw.png" group-title="全球电影台",Amedia Hit (1080p) 🌐
+http://stream.mcquack.net/162/index.m3u8
 #EXTINF:-1 tvg-id="AmediaPremium.ru@SD" tvg-logo="https://i.imgur.com/UUjehw9.png" group-title="全球电影台",Amedia Premium (720p) 🌐
 http://31.148.48.15/Amedia_Premium_HD/index.m3u8
 #EXTINF:-1 tvg-id="AmericanHorrors.us@SD" tvg-logo="https://image.roku.com/developer_channels/prod/16f5571a82819e8992a748c70b256cbe63105f4b546b73d129668dc2cb701d91.png" group-title="全球电影台",American Horrors (480p) 🌐
@@ -459,6 +465,8 @@ http://107.167.7.162:8081/playlist/amhor/playlist.m3u8
 http://103.175.73.12:8080/live/271/271_0.m3u8
 #EXTINF:-1 tvg-id="AnmolCinema2.in@SD" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_ZEE_ANMOL_CINEMA_2/images/LOGO_HD/LOGO_HD_image.png" group-title="全球电影台",Anmol Cinema 2 (576p) 🌐
 http://103.175.73.12:8080/live/257/257_0.m3u8
+#EXTINF:-1 tvg-id="ArmeniaPremium.am@SD" group-title="全球电影台",Armenia Premium (720p) 🌐
+http://stream.mcquack.net/123/index.m3u8
 #EXTINF:-1 tvg-id="ARTFLIXMovieClassics.us@SD" tvg-logo="https://i.imgur.com/5pOZQB4.png" group-title="全球电影台",Artflix Movie Classics (720p) 🌐
 https://amogonetworx-artflix-1-nl.samsung.wurl.tv/playlist.m3u8
 #EXTINF:-1 tvg-id="AuroraMediaFilms.gt@SD" tvg-logo="https://i.imgur.com/DVC5w6H.png" group-title="全球电影台",Aurora Media Films (720p) 🌐
@@ -475,6 +483,8 @@ http://103.137.83.62:9090/play/21/index.m3u8
 http://88.212.15.19/live/test_black/playlist.m3u8
 #EXTINF:-1 tvg-id="AXNCEE.es@CzechRepublic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="全球电影台",AXN CEE Czech Republic 🌐
 http://88.212.15.19/live/test_axn/playlist.m3u8
+#EXTINF:-1 tvg-id="AXNCEE.es@Romania" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="全球电影台",AXN CEE Romania (720p) 🌐
+https://aes.m3u8simplu.workers.dev/axn/index.m3u8
 #EXTINF:-1 tvg-id="AXNLatinAmerica.us@CentralAmerica" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="全球电影台",AXN Latin America (1080p) 🌐
 http://138.121.15.230:9002/AXN/index.m3u8
 #EXTINF:-1 tvg-id="AXNLatinAmerica.us@Andes" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="全球电影台",AXN Latin America Andes (1080p) 🌐
@@ -497,10 +507,14 @@ https://jmp2.uk/plu-58af4c093a41ca9d4ecabe96.m3u8
 https://jmp2.uk/plu-68c32d88f56983aba40052bd.m3u8
 #EXTINF:-1 tvg-id="BETVisionaries.us@SD" tvg-logo="https://images.pluto.tv/channels/663946c1b18d700008d9c168/colorLogoPNG_1759338795452.png" group-title="全球电影台",BET Visionaries 🌐
 https://jmp2.uk/plu-663946c1b18d700008d9c168.m3u8
+#EXTINF:-1 tvg-id="BIZCinema.uz@SD" tvg-logo="https://biztv.uz/static/media/biz-cinema.286b83dc.png" group-title="全球电影台",BIZ Cinema (1080p) 🌐
+https://fl.biztv.media/cinema_720_EMfSyXgoRdiIHgldXTZICucKTIeCKO/index.m3u8
 #EXTINF:-1 tvg-id="BollywoodHD.ro@Russia" tvg-logo="https://i.imgur.com/scDKOLS.png" group-title="全球电影台",Bollywood HD Russia (576p) 🌐
 https://xykt-fix.github.io/cinerama_edge01/hls/BOLLYWOOD_RU/Movie009.m3u8
 #EXTINF:-1 tvg-id="Bolt.ru@SD" tvg-logo="https://i.imgur.com/YdIHXOR.png" group-title="全球电影台",Bolt (576p) 🌐
 http://hls127.freeott.top:8080/Bolt/video.m3u8
+#EXTINF:-1 tvg-id="Bolt.ua@SD" tvg-logo="https://i.imgur.com/YdIHXOR.png" group-title="全球电影台",Bolt (1080p) 🌐
+http://stream.mcquack.net/73/index.m3u8
 #EXTINF:-1 tvg-id="Bonanza.us@CA" tvg-logo="https://images.pluto.tv/channels/696e647b07ea70192d49f6a5/colorLogoPNG_1768842647658.png" group-title="全球电影台",Bonanza 🌐
 https://jmp2.uk/plu-696e647b07ea70192d49f6a5.m3u8
 #EXTINF:-1 tvg-id="Boreal.do@SD" tvg-logo="https://i.imgur.com/KSquHTG.png" group-title="全球电影台",Boreal (720p) [Not 24/7] 🌐
