@@ -17,6 +17,8 @@ https://cdn-1.pishow.tv/live/232/master.m3u8
 https://video1.getstreamhosting.com:1936/8042/8042/playlist.m3u8
 #EXTINF:-1 tvg-id="10TV.in@SD" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_10TV/images/LOGO_HD/image.png" group-title="全球新闻网",10 TV (720p) 🌐
 https://mumbai-edge.smartplaytv.in/10TV/index.m3u8
+#EXTINF:-1 tvg-id="13SiamThai.th@SD" tvg-logo="https://i.imgur.com/FvEp1S2.png" group-title="全球新闻网",13 Siam Thai (1080p) 🌐
+https://live.x2.co.th/live/13livetv-th.m3u8
 #EXTINF:-1 tvg-id="22ScopeNews.in@SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/22Scope_News.png" group-title="全球新闻网",22Scope News (1080p) 🌐
 https://thelegitpro.in/HDlive/22scope/index.fmp4.m3u8
 #EXTINF:-1 tvg-id="247CanaldeNoticias.ar@SD" tvg-logo="https://i.imgur.com/4hDCB1M.png" group-title="全球新闻网",24/7 Canal de Noticias 🌐
@@ -151,6 +153,8 @@ https://aloula-redirect.vercel.app/4/playlist.m3u8
 https://eazyvwqssi.erbvr.com/alghadtv/alghadtv.m3u8
 #EXTINF:-1 tvg-id="AlHadath.sa@SD" tvg-logo="https://i.imgur.com/De4SEWE.png" group-title="全球新闻网",Al Hadath (1080p) 🌐
 https://shd-gcp-live.edgenextcdn.net/live/bitmovin-hadath/2ff87ec4c2f3ede35295a20637d9f8fd/index.m3u8
+#EXTINF:-1 tvg-id="AlIraqiaNews.iq@SD" tvg-logo="https://i.imgur.com/feQTXeZ.jpg" group-title="全球新闻网",Al Iraqia News (720p) 🌐
+https://imn-live.esite-lab.com/hls/iraqia-news.m3u8
 #EXTINF:-1 tvg-id="30ALoomeredTV.us@SD" tvg-logo="https://cbs12.com/resources/media/0c1ecad8-fb09-4bb2-beaa-fc561dfe624a-small21x9_LoomerStill.jpg?1603419052801" group-title="全球纪录片",30A Loomered TV 🌐
 https://30a-tv.com/loomer.m3u8
 #EXTINF:-1 tvg-id="365daysTV.ru@SD" tvg-logo="https://i.imgur.com/NfnAiTR.png" group-title="全球纪录片",365 Дней (576p) 🌐
@@ -411,8 +415,6 @@ https://30a-tv.com/feeds/pzaz/30atvmovies.m3u8
 https://jmp2.uk/plu-68487fb3f212bedacf5a53e3.m3u8
 #EXTINF:-1 tvg-id="70sCinema.us@SD" tvg-logo="https://i.imgur.com/mgXeEE4.png" group-title="全球电影台",70s Cinema 🌐
 https://jmp2.uk/plu-5f4d878d3d19b30007d2e782.m3u8
-#EXTINF:-1 tvg-id="80sRewind.us@SD" tvg-logo="https://i.imgur.com/nkEeYfI.png" group-title="全球电影台",80s Rewind 🌐
-https://jmp2.uk/plu-5ca525b650be2571e3943c63.m3u8
 #EXTINF:-1 tvg-id="90sThrowback.us@SD" tvg-logo="https://i.imgur.com/KoGko6M.png" group-title="全球电影台",90s Throwback 🌐
 https://jmp2.uk/plu-5f4d86f519358a00072b978e.m3u8
 #EXTINF:-1 tvg-id="AndTV.in@International" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_SYMANDTV/images/LOGO_HD/LOGO_HD_image.png" group-title="全球电影台",&TV International (1080p) 🌐
@@ -469,16 +471,12 @@ http://103.175.73.12:8080/live/257/257_0.m3u8
 http://stream.mcquack.net/123/index.m3u8
 #EXTINF:-1 tvg-id="ARTFLIXMovieClassics.us@SD" tvg-logo="https://i.imgur.com/5pOZQB4.png" group-title="全球电影台",Artflix Movie Classics (720p) 🌐
 https://amogonetworx-artflix-1-nl.samsung.wurl.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="AuroraMediaFilms.gt@SD" tvg-logo="https://i.imgur.com/DVC5w6H.png" group-title="全球电影台",Aurora Media Films (720p) 🌐
-https://cdn.streamhispanatv.net:3417/live/auroramflive.m3u8
 #EXTINF:-1 tvg-id="AXN.br@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="全球电影台",AXN (720p) 🌐
 http://45.190.28.50/AXN_HD/index.m3u8
 #EXTINF:-1 tvg-id="AXN.pt@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="全球电影台",AXN 🌐
 http://znty.dyndns.org:5010/hls/axn.m3u8
 #EXTINF:-1 tvg-id="AXNAdria.us@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="全球电影台",AXN Adria 🌐
 http://5.57.74.130:8000/play/a0at/index.m3u8
-#EXTINF:-1 tvg-id="AXNAsia.sg@Indonesia" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="全球电影台",AXN Asia Indonesia 🌐
-http://103.137.83.62:9090/play/21/index.m3u8
 #EXTINF:-1 tvg-id="AXNBlack.us@CzechRepublic" tvg-logo="https://i.imgur.com/Peo1QiZ.png" group-title="全球电影台",AXN Black Czech Republic 🌐
 http://88.212.15.19/live/test_black/playlist.m3u8
 #EXTINF:-1 tvg-id="AXNCEE.es@CzechRepublic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="全球电影台",AXN CEE Czech Republic 🌐
